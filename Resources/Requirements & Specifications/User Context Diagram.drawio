@@ -68,7 +68,7 @@
           <mxGeometry x="68" y="920" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="UNos-CsjaKPpaQYKpEou-10" value="&lt;p align=&quot;center&quot; class=&quot;MsoNormal&quot;&gt;Browse/View available&lt;br&gt;Cars&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="360" y="60" width="120" height="60" as="geometry" />
+          <mxGeometry x="360" y="40" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="UNos-CsjaKPpaQYKpEou-11" value="&lt;p align=&quot;center&quot; class=&quot;MsoNormal&quot;&gt;Book &amp;nbsp;Car Rentals&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="360" y="219" width="120" height="60" as="geometry" />
@@ -142,7 +142,7 @@
           <mxGeometry x="360" y="950" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="4A_q3F_WTV_gnmEse8YE-20" value="&lt;p align=&quot;center&quot; class=&quot;MsoNormal&quot;&gt;Modify Customer&lt;br/&gt;Profile&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="360" y="150" width="120" height="60" as="geometry" />
+          <mxGeometry x="360" y="130" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="4A_q3F_WTV_gnmEse8YE-22" value="&lt;p align=&quot;center&quot; class=&quot;MsoNormal&quot;&gt;Contact Us&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="360" y="670" width="120" height="60" as="geometry" />
