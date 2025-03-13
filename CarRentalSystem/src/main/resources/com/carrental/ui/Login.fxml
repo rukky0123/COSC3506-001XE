@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Button?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/21.0.6"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.carrental.controllers.LoginController">
+    <Label text="Car Rental System" />
+    <TextField fx:id="usernameField" promptText="Username"/>
+    <PasswordField fx:id="passwordField" promptText="Password"/>
+    <Button text="Login" onAction="#handleLogin"/>
+</VBox>
