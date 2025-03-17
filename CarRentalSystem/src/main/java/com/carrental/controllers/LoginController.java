@@ -5,6 +5,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import com.carrental.DatabaseConnection;
 
 public class LoginController {
     @FXML private TextField usernameField;
@@ -15,10 +20,24 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if ("admin".equals(username) && "1234".equals(password)) {
-            showAlert("Login Successful", "Welcome Admin!");
+        if (validateUser(username, password)) {
+            showAlert("Login Successful", "Welcome " + username + "!");
         } else {
             showAlert("Login Failed", "Invalid credentials");
+        }
+    }
+
+    private boolean validateUser(String username, String password) {
+        String query = "SELECT * FROM CR_User WHERE username = ? AND password = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next(); // If user exists, return true
+        } catch (SQLException e) {
+            showAlert("Database Error", "Error accessing database: " + e.getMessage());
+            return false;
         }
     }
 
