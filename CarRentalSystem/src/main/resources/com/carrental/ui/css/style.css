@@ -1,0 +1,122 @@
+/* LOGIN PAGE STYLES */
+.login-container {
+    -fx-background-color: #1E3A66; /* Blue Background */
+    -fx-padding: 30px;
+    -fx-alignment: center;
+}
+
+/* Apply background globally */
+.root {
+    -fx-background-color: #1E3A66; /* Same as login */
+}
+
+/* Generic Container for Login and Signup */
+.screen-container {
+    -fx-padding: 30px;
+    -fx-alignment: center;
+}
+
+/* Apply to all main titles (Login, Signup, Dashboard) */
+.main-title {
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+/* Apply to all buttons */
+.button {
+    -fx-background-color: white;
+    -fx-text-fill: #1E3A66;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 3px;
+    -fx-pref-width: 150px;
+}
+
+.button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Logo Text */
+.logo-text {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+/* Subtitle */
+.sub-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* Description */
+.description-text {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-max-width: 300px;
+}
+
+/* Labels */
+.input-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+/* Input Fields */
+.input-field {
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-background-color: white;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+    -fx-border-radius: 3px;
+    -fx-pref-width: 250px;
+}
+
+/* Error Messages */
+.error-text {
+    -fx-text-fill: #ffcc00; /* Yellow Error Text */
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* Login Button */
+.login-button {
+    -fx-background-color: white;
+    -fx-text-fill: #1E3A66;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 3px;
+    -fx-pref-width: 150px;
+}
+
+.login-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Forgot Password */
+.forgot-password {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+/* Signup Button */
+.signup-button {
+    -fx-background-color: white;
+    -fx-text-fill: #1E3A66;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 3px;
+    -fx-pref-width: 150px;
+}
+
+.signup-button:hover {
+    -fx-background-color: #f0f0f0;
+}
