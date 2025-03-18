@@ -8,6 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.carrental.DatabaseConnection;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -16,6 +19,18 @@ public class LoginController {
     @FXML private PasswordField passwordField;
     @FXML private Label userErrorLabel;
     @FXML private Label passwordErrorLabel;
+    @FXML private ImageView logoImage;
+
+    @FXML
+    public void initialize() {
+        // Load the logo image
+        Image image = new Image(getClass().getResourceAsStream("/com/carrental/ui/assets/harmoney.jpg"));
+        if (image.isError()) {
+            System.err.println("Error loading logo image.");
+        } else {
+            logoImage.setImage(image);
+        }
+    }
 
     @FXML
     public void handleLogin() {

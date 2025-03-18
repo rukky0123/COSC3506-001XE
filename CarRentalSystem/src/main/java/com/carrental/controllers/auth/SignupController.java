@@ -7,44 +7,82 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.carrental.DatabaseConnection;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class SignupController {
-    @FXML private TextField firstNameField;
-    @FXML private TextField lastNameField;
+    @FXML private TextField usernameField;
     @FXML private TextField emailField;
     @FXML private PasswordField passwordField;
-    @FXML private PasswordField confirmPasswordField;
+    @FXML private Label errorUsername;
+    @FXML private Label errorEmail;
+    @FXML private Label errorPassword;
+    @FXML private ImageView logoImage;
+
+    @FXML
+    public void initialize() {
+        // Load logo image
+        try {
+            Image image = new Image(getClass().getResource("/com/carrental/ui/assets/harmoney.jpg").toExternalForm());
+            logoImage.setImage(image);
+        } catch (Exception e) {
+            System.err.println("Error loading logo image.");
+        }
+    }
 
     @FXML
     public void handleSignup() {
-        String firstName = firstNameField.getText();
-        String lastName = lastNameField.getText();
+        String username = usernameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
-        String confirmPassword = confirmPasswordField.getText();
 
-        if (!password.equals(confirmPassword)) {
-            showAlert("Error", "Passwords do not match.");
-            return;
+        // Clear previous errors
+        errorUsername.setText("");
+        errorEmail.setText("");
+        errorPassword.setText("");
+
+        boolean valid = true;
+
+        if (username.isEmpty()) {
+            errorUsername.setText("Enter a valid User Name.");
+            valid = false;
         }
+
+        if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            errorEmail.setText("Enter a valid email address.");
+            valid = false;
+        }
+
+        if (password.length() < 8 || !password.matches(".*[A-Z].*") || !password.matches(".*[!@#$%^&*].*")) {
+            errorPassword.setText("Password must be 8+ chars, 1 uppercase, 1 special char.");
+            valid = false;
+        }
+
+        if (!valid) return;
 
         if (registerUser(email, password)) {
             showAlert("Success", "Account created successfully!");
-            SceneManager.showScene("login"); // Redirect to Login
+            // Clear fields on success
+            usernameField.clear();
+            emailField.clear();
+            passwordField.clear();
+            SceneManager.showScene("login");
         } else {
             showAlert("Error", "Signup failed. Try again.");
         }
     }
 
     private boolean registerUser(String email, String password) {
-        String query = "INSERT INTO CR_User (username, password) VALUES (?, ?)";
+        String query = "INSERT INTO CR_User (username, password, role, email) VALUES (?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
             stmt.setString(1, email);
             stmt.setString(2, hashPassword(password));
+            stmt.setString(3, "Customer");
+            stmt.setString(4, email);
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -63,7 +101,6 @@ public class SignupController {
             }
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
             return password;
         }
     }

@@ -12,6 +12,11 @@ public class MainApp extends Application {
         SceneManager.loadScene("login", "com/carrental/ui/views/auth/Login.fxml");
         SceneManager.loadScene("signup", "com/carrental/ui/views/auth/Signup.fxml");
 
+        // Set full-screen mode
+        primaryStage.setTitle("Harmony - Car Rental System");
+        primaryStage.setMaximized(true); // Maximizes window on launch
+        primaryStage.setFullScreen(true); // Opens in full screen
+
         // Show the login screen by default
         SceneManager.showScene("login");
     }
