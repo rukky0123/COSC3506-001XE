@@ -1,0 +1,64 @@
+.root {
+    -fx-background-color: #1E3A66;
+}
+
+/* Main container */
+.screen-container {
+    -fx-padding: 5%;
+    -fx-alignment: center;
+}
+
+/* Logo */
+.logo-text {
+    -fx-text-fill: white;
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+}
+
+/* Titles */
+.main-title {
+    -fx-text-fill: white;
+    -fx-font-size: 2.5em;
+    -fx-font-weight: bold;
+}
+
+/* Sub Title */
+.sub-title {
+    -fx-text-fill: white;
+    -fx-font-size: 2em;
+}
+
+.description-text {
+    -fx-text-fill: white;
+    -fx-font-size: 1em;
+}
+/* Labels */
+.input-label {
+    -fx-text-fill: white;
+    -fx-font-size: 1.2em;
+}
+
+/* Input Fields */
+.input-field {
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-background-color: white;
+    -fx-padding: 10px;
+    -fx-font-size: 1.2em;
+    -fx-pref-width: 300px;
+}
+
+/* Error messages */
+.error-text {
+    -fx-text-fill: red;
+    -fx-font-size: 1em;
+}
+
+/* Buttons */
+.signup-button, .login-button {
+    -fx-background-color: white;
+    -fx-text-fill: #1E3A66;
+    -fx-font-size: 1.2em;
+    -fx-padding: 15px 30px;
+    -fx-border-radius: 5px;
+}

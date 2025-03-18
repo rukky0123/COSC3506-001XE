@@ -13,7 +13,6 @@ public class SceneManager {
     private static Stage primaryStage;
     private static final Map<String, Scene> scenes = new HashMap<>();
     private static final Map<String, Object> controllers = new HashMap<>();
-    private static final String CSS_PATH = "com/carrental/ui/css/style.css";
 
     public static void setPrimaryStage(Stage stage) {
         primaryStage = stage;
@@ -39,15 +38,8 @@ public class SceneManager {
         if (primaryStage != null && scenes.containsKey(name)) {
             Scene scene = scenes.get(name);
 
-            // Ensure CSS is applied to all screens
-            String css = SceneManager.class.getClassLoader().getResource(CSS_PATH).toExternalForm();
-            scene.getStylesheets().clear(); // Clear previous styles
-            scene.getStylesheets().add(css);
-
             primaryStage.setScene(scene);
             primaryStage.show();
-
-            System.out.println("Applied CSS from: " + css + " to scene: " + name); // Debugging
         } else {
             System.err.println("Scene not found: " + name);
         }
@@ -56,5 +48,9 @@ public class SceneManager {
 
     public static Object getController(String name) {
         return controllers.get(name);
+    }
+
+    public static void initCustomerScenes(){
+        loadScene("customerDashboard", "com/carrental/ui/views/dashboards/CustomerDashboard.fxml");
     }
 }

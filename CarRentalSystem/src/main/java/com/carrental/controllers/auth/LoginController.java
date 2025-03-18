@@ -1,6 +1,7 @@
 package com.carrental.controllers.auth;
 
 import com.carrental.SceneManager;
+import com.carrental.controllers.dashboards.CustomerDashboardController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.sql.Connection;
@@ -42,15 +43,14 @@ public class LoginController {
         String password = passwordField.getText();
 
         if (validateUser(username, password)) {
-            showAlert("Login Successful", "Welcome " + username + "!");
-
             // Clear fields on success
             usernameField.clear();
             passwordField.clear();
 
-            // Future Navigation: Go to Dashboard (not implemented yet)
-            // SceneManager.showScene("dashboard");
-
+            CustomerDashboardController.setLoggedInUser(username);
+            showAlert("Login Successful", "Welcome " + username + "!");
+            SceneManager.initCustomerScenes();
+            SceneManager.showScene("customerDashboard");
         } else {
             userErrorLabel.setVisible(true);
             passwordErrorLabel.setVisible(true);
@@ -95,7 +95,6 @@ public class LoginController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setContentText(content);
-        alert.showAndWait();
     }
 
     @FXML

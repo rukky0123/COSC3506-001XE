@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<StackPane prefWidth="1000.0" prefHeight="800.0" stylesheets="@/com/carrental/ui/css/dashboard.css"
+           xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.carrental.controllers.dashboards.CustomerDashboardController">
+
+    <!-- Top Bar -->
+    <VBox alignment="CENTER" spacing="20" styleClass="screen-container">
+        <VBox spacing="10">
+            <Label fx:id="welcomeLabel" text="Welcome, User!" styleClass="main-title" alignment="CENTER"/>
+        </VBox>
+
+        <!-- Main Content -->
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="This is your dashboard." styleClass="sub-title"/>
+            <Button text="Logout" onAction="#handleLogout"/>
+        </VBox>
+    </VBox>
+
+</StackPane>
