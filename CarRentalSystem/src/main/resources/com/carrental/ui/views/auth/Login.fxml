@@ -9,10 +9,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.geometry.Pos?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/21.0.6"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.carrental.controllers.LoginController"
+      fx:controller="com.carrental.controllers.auth.LoginController"
       styleClass="login-container">
 
     <!-- Logo & Name -->
@@ -46,5 +47,5 @@
     <Label text="Forgot password?" styleClass="forgot-password"/>
 
     <!-- Sign Up Button -->
-    <Button text="Sign Up" styleClass="signup-button"/>
+    <Button text="Sign Up" onAction="#goToSignup" styleClass="signup-button"/>
 </VBox>
