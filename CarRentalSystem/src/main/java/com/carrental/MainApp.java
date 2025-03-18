@@ -6,23 +6,28 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.sql.Connection;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.util.Objects;
 
 public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            // Initialize database connection
-            Connection conn = DatabaseConnection.getConnection();
-            if (conn != null) {
-                System.out.println("✅ Database connected successfully.");
-            } else {
-                System.err.println("❌ Failed to initialize database connection.");
-            }
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/carrental/ui/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/carrental/ui/views/Login/Login.fxml"));
             VBox root = loader.load();
+
+            // Load Logo Image
+            ImageView logoImage = (ImageView) loader.getNamespace().get("logoImage");
+            logoImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/carrental/ui/assets/harmoney.jpg"))));
+
             Scene scene = new Scene(root);
+
+            // Apply CSS
+            String css = Objects.requireNonNull(getClass().getResource("/com/carrental/ui/css/style.css")).toExternalForm();
+            scene.getStylesheets().add(css);
+
             primaryStage.setScene(scene);
             primaryStage.setTitle("Car Rental System");
             primaryStage.show();
