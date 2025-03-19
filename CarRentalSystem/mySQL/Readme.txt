@@ -71,9 +71,9 @@ Sample Data to Insert
 
 -- 3. Insert records with Admin, Customer, and Staff Roles
 INSERT INTO CR_User (username, password, role, email) VALUES
-('admin', 'admin', 'Admin', 'admin@carrental.com'),
-('staff', 'staff', 'Staff', 'staff1@carrental.com'),
-('customer', 'customer', 'Customer', 'customer1@carrental.com');
+('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Admin', 'admin@carrental.com'),
+('staff', '1562206543da764123c21bd524674f0a8aaf49c8a89744c97352fe677f7e4006', 'Staff', 'staff1@carrental.com'),
+('customer', 'b6c45863875e34487ca3c155ed145efe12a74581e27befec5aa661b8ee8ca6dd', 'Customer', 'customer1@carrental.com');
 
 -- 4. Insert records for Car Inventory
 INSERT INTO CR_Inventory (make, model, year, price_per_day, availability) VALUES

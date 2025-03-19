@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefWidth="1000.0" prefHeight="800.0" stylesheets="@/com/carrental/ui/css/auth.css"
+           xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.carrental.controllers.auth.LoginController">
+
+    <!-- Centered VBox Container -->
+    <VBox alignment="CENTER" spacing="20" styleClass="screen-container">
+
+        <!-- Logo -->
+        <ImageView fx:id="logoImage" fitWidth="120.0" fitHeight="120.0"/>
+
+        <!-- Branding -->
+        <Label text="Harmony" styleClass="logo-text"/>
+        <Label text="Log in Your Account" styleClass="main-title"/>
+        <Label text="Star Your Journey Today!" styleClass="sub-title"/>
+        <Label text="Ready to hit the road? Let’s get you signed in to explore the best rides tailored just for you."
+               wrapText="true" styleClass="description-text"/>
+
+        <!-- User ID -->
+        <VBox alignment="CENTER" spacing="5" maxWidth="500.0">
+            <Label text="User Id" styleClass="input-label"/>
+            <TextField fx:id="usernameField" styleClass="input-field"/>
+            <Label fx:id="userErrorLabel" text="Invalid User ID. Please try again."
+                   styleClass="error-text" visible="false"/>
+        </VBox>
+
+        <!-- Password -->
+        <VBox alignment="CENTER" spacing="5" maxWidth="500.0">
+            <Label text="Password" styleClass="input-label"/>
+            <PasswordField fx:id="passwordField" styleClass="input-field"/>
+            <Label fx:id="passwordErrorLabel" text="Incorrect password. Please try again."
+                   styleClass="error-text" visible="false"/>
+        </VBox>
+
+        <!-- Buttons -->
+        <VBox alignment="CENTER" spacing="10">
+            <Button text="Login" styleClass="login-button" onAction="#handleLogin"/>
+            <Label text="Forgot password?" styleClass="forgot-password"/>
+            <Button text="Sign Up" styleClass="signup-button" onAction="#goToSignup"/>
+        </VBox>
+    </VBox>
+</StackPane>

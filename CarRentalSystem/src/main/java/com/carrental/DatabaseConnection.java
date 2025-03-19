@@ -13,16 +13,12 @@ public class DatabaseConnection {
     private DatabaseConnection() {}
 
     public static Connection getConnection() {
-        if (connection == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                System.out.println("Database Connected Successfully.");
+                return DriverManager.getConnection(URL, USER, PASSWORD);
             } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
-                throw new RuntimeException("Database connection failed!");
+                return null;
             }
-        }
-        return connection;
     }
 }
