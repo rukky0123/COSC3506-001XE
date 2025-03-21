@@ -1,4 +1,4 @@
-package com.carrental.controllers.dashboards;
+package com.carrental.controllers.dashboards.CustomerDashboard;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

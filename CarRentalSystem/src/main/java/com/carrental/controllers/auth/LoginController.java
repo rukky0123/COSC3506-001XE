@@ -1,7 +1,6 @@
 package com.carrental.controllers.auth;
 
 import com.carrental.SceneManager;
-import com.carrental.controllers.dashboards.CustomerDashboardController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.sql.Connection;
@@ -11,9 +10,12 @@ import java.sql.SQLException;
 import com.carrental.DatabaseConnection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
+
+import com.carrental.models.User;
+import com.carrental.models.UserSession;
 
 public class LoginController {
     @FXML private TextField usernameField;
@@ -42,23 +44,37 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (validateUser(username, password)) {
+        User user = validateUser(username, password);
+
+        if (user != null) {
             // Clear fields on success
             usernameField.clear();
             passwordField.clear();
 
-            CustomerDashboardController.setLoggedInUser(username);
-            showAlert("Login Successful", "Welcome " + username + "!");
-            SceneManager.initCustomerScenes();
-            SceneManager.showScene("customerDashboard");
+            // Set the logged-in user in the session
+            UserSession.setLoggedInUser(user);
+
+            // Initialize scene based on role
+            if(user.getRole().equals("Customer")) {
+                SceneManager.initCustomerScenes();
+                SceneManager.showScene("customerDashboard");
+            } else if (user.getRole().equals("Admin")) {
+                SceneManager.initAdminScenes();
+                SceneManager.showScene("adminDashboard");
+            } else if (user.getRole().equals("Staff")) {
+                SceneManager.initStaffScenes();
+                //SceneManager.showScene("customerDashboard");
+            }else{
+                showAlert("Role Error", "Role Error");
+            }
         } else {
             userErrorLabel.setVisible(true);
             passwordErrorLabel.setVisible(true);
         }
     }
 
-    private boolean validateUser(String username, String password) {
-        String query = "SELECT password FROM CR_User WHERE username = ?";
+    private User validateUser(String username, String password) {
+        String query = "SELECT user_id, username, password, role, email, created_at FROM CR_User WHERE username = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
@@ -67,12 +83,22 @@ public class LoginController {
 
             if (rs.next()) {
                 String storedPassword = rs.getString("password");
-                return storedPassword.equals(hashPassword(password));
+
+                // Check password
+                if (storedPassword.equals(hashPassword(password))) {
+                    // Return a User object upon successful validation
+                    int userId = rs.getInt("user_id");
+                    String role = rs.getString("role");
+                    String email = rs.getString("email");
+                    Timestamp createdAt = rs.getTimestamp("created_at");
+
+                    return new User(userId, username, storedPassword, role, email, createdAt);
+                }
             }
-            return false;
+            return null; // User not found or password mismatch
         } catch (SQLException e) {
             showAlert("Database Error", "Error accessing database: " + e.getMessage());
-            return false;
+            return null;
         }
     }
 
@@ -95,6 +121,7 @@ public class LoginController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setContentText(content);
+        alert.showAndWait();
     }
 
     @FXML
