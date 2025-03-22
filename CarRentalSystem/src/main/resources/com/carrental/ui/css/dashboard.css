@@ -127,11 +127,26 @@
 
 .button {
     -fx-background-color: #4299e1;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-weight: bold;
     -fx-background-radius: 5px;
     -fx-cursor: hand;
 }
 .button:hover {
     -fx-background-color: #2b6cb0;
+}
+
+.secondary-button {
+    -fx-background-color: #4299e1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.dialog-pane {
+    -fx-background-color: white;
+    -fx-border-color: #cbd5e0;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
 }

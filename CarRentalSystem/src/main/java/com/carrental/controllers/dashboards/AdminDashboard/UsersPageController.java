@@ -1,8 +1,10 @@
 package com.carrental.controllers.dashboards.AdminDashboard;
 
+import com.carrental.controllers.dashboards.AdminDashboard.components.UserFormDialogController;
 import com.carrental.database.UserDAO;
 import com.carrental.models.User;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
@@ -40,23 +42,84 @@ public class UsersPageController {
             @Override
             public TableCell<User, Void> call(final TableColumn<User, Void> param) {
                 return new TableCell<>() {
-                    private final Button btn = new Button("Change User Type");
+                    private final Button editBtn = new Button("Edit");
+                    private final Button deleteBtn = new Button("Delete");
 
                     {
-                        btn.setOnAction(e -> {
+                        editBtn.setOnAction(e -> {
                             User user = getTableView().getItems().get(getIndex());
-                            System.out.println("Change user type: " + user.getUsername());
+                            showUserForm(user); // open in edit mode
                         });
-                        btn.getStyleClass().add("button");
+
+                        deleteBtn.setOnAction(e -> {
+                            User user = getTableView().getItems().get(getIndex());
+                            boolean confirmed = confirmDelete(user.getUsername());
+                            if (confirmed) {
+                                UserDAO.deleteUser(user.getUserId());
+                                refreshTable();
+                            }
+                        });
+
+                        editBtn.getStyleClass().add("button");
+                        deleteBtn.getStyleClass().add("button");
                     }
 
                     @Override
                     public void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
-                        setGraphic(empty ? null : new HBox(btn));
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            HBox box = new HBox(10, editBtn, deleteBtn);
+                            setGraphic(box);
+                        }
                     }
                 };
             }
         });
+    }
+
+    private boolean confirmDelete(String username) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Confirmation");
+        alert.setHeaderText("Are you sure you want to delete user: " + username + "?");
+        return alert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK;
+    }
+
+
+    private void refreshTable() {
+        List<User> users = UserDAO.getAllUsers();
+        userTable.setItems(FXCollections.observableArrayList(users));
+    }
+
+    @FXML
+    private void handleAddUser() {
+        showUserForm(null); // null = new user
+    }
+
+    private void showUserForm(User existingUser) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/carrental/ui/views/dashboards/AdminDashboard/components/UserFormDialog.fxml"));
+            DialogPane dialogPane = loader.load();
+
+            UserFormDialogController controller = loader.getController();
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setDialogPane(dialogPane);
+            dialog.initOwner(userTable.getScene().getWindow());
+
+            controller.setUser(existingUser, user -> {
+                if (existingUser == null) {
+                    UserDAO.insertUser(user);
+                } else {
+                    UserDAO.updateUser(user);
+                }
+                refreshTable();
+            });
+
+            dialog.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
