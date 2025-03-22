@@ -5,13 +5,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.carrental.DatabaseConnection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
+
+import com.carrental.models.User;
+import com.carrental.models.UserSession;
 
 public class SignupController {
     @FXML private TextField usernameField;
@@ -63,31 +67,65 @@ public class SignupController {
 
         if (!valid) return;
 
-        if (registerUser(email, password)) {
+        if (registerUser(username, email, password)) {
             showAlert("Success", "Account created successfully!");
             // Clear fields on success
             usernameField.clear();
             emailField.clear();
             passwordField.clear();
+
+            // Fetch the newly created user from the database
+            User user = getUserByUsername(username);
+            if (user != null) {
+                // Set the logged-in user in the session
+                UserSession.setLoggedInUser(user);
+            }
+
+            // Navigate to login or dashboard
             SceneManager.showScene("login");
         } else {
             showAlert("Error", "Signup failed. Try again.");
         }
     }
 
-    private boolean registerUser(String email, String password) {
+    private boolean registerUser(String username, String email, String password) {
         String query = "INSERT INTO CR_User (username, password, role, email) VALUES (?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, email);
+            stmt.setString(1, username);
             stmt.setString(2, hashPassword(password));
-            stmt.setString(3, "Customer");
+            stmt.setString(3, "Customer");  // Default role for new user
             stmt.setString(4, email);
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             showAlert("Database Error", "Error registering user: " + e.getMessage());
             return false;
+        }
+    }
+
+    private User getUserByUsername(String username) {
+        String query = "SELECT user_id, username, password, role, email, created_at FROM CR_User WHERE username = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int userId = rs.getInt("user_id");
+                String password = rs.getString("password");
+                String role = rs.getString("role");
+                String email = rs.getString("email");
+                Timestamp createdAt = rs.getTimestamp("created_at");
+
+                return new User(userId, username, password, role, email, createdAt);
+            }
+
+            return null;
+        } catch (SQLException e) {
+            showAlert("Database Error", "Error fetching user: " + e.getMessage());
+            return null;
         }
     }
 

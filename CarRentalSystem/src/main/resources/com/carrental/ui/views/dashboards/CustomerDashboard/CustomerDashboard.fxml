@@ -5,7 +5,7 @@
 
 <StackPane prefWidth="1000.0" prefHeight="800.0" stylesheets="@/com/carrental/ui/css/dashboard.css"
            xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.carrental.controllers.dashboards.CustomerDashboardController">
+           fx:controller="com.carrental.controllers.dashboards.CustomerDashboard.CustomerDashboardController">
 
     <!-- Top Bar -->
     <VBox alignment="CENTER" spacing="20" styleClass="screen-container">

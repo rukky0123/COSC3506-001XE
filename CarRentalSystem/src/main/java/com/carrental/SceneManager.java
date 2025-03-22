@@ -51,6 +51,14 @@ public class SceneManager {
     }
 
     public static void initCustomerScenes(){
-        loadScene("customerDashboard", "com/carrental/ui/views/dashboards/CustomerDashboard.fxml");
+        loadScene("customerDashboard", "com/carrental/ui/views/dashboards/CustomerDashboard/CustomerDashboard.fxml");
+    }
+
+    public static void initStaffScenes(){
+        //Staff routes go here
+    }
+
+    public static void initAdminScenes(){
+        loadScene("adminDashboard", "com/carrental/ui/views/dashboards/AdminDashboard/AdminDashboard.fxml");
     }
 }
