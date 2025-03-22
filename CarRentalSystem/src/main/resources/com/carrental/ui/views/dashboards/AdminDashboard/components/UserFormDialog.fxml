@@ -7,27 +7,27 @@
 <DialogPane xmlns="http://javafx.com/javafx/8.0"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.carrental.controllers.dashboards.AdminDashboard.components.UserFormDialogController"
-            prefWidth="400" prefHeight="420"
-            styleClass="dialog-pane">
+            prefWidth="440" prefHeight="460"
+            styleClass="user-dialog-pane">
 
     <content>
-        <VBox spacing="15" alignment="CENTER">
+        <VBox spacing="18" alignment="CENTER">
             <padding>
-                <Insets top="25" right="25" bottom="25" left="25"/>
+                <Insets top="30" right="30" bottom="30" left="30"/>
             </padding>
 
-            <Label fx:id="formTitle" text="Add User" styleClass="main-title"/>
+            <Label fx:id="formTitle" text="Add User" styleClass="user-dialog-title"/>
 
-            <TextField fx:id="usernameField" promptText="Username" styleClass="input-field"/>
-            <PasswordField fx:id="passwordField" promptText="Password" styleClass="input-field"/>
-            <TextField fx:id="emailField" promptText="Email" styleClass="input-field"/>
-            <ComboBox fx:id="roleBox" promptText="Select Role" styleClass="input-field"/>
+            <TextField fx:id="usernameField" promptText="Username" styleClass="user-input-field"/>
+            <PasswordField fx:id="passwordField" promptText="Password" styleClass="user-input-field"/>
+            <TextField fx:id="emailField" promptText="Email" styleClass="user-input-field"/>
+            <ComboBox fx:id="roleBox" promptText="Select Role" styleClass="user-input-field"/>
 
-            <Label fx:id="errorLabel" textFill="red" styleClass="error-text"/>
+            <Label fx:id="errorLabel" styleClass="user-error-text"/>
 
             <HBox spacing="15" alignment="CENTER">
-                <Button fx:id="cancelButton" text="Cancel" styleClass="secondary-button"/>
-                <Button fx:id="saveButton" text="Save" defaultButton="true" styleClass="button"/>
+                <Button fx:id="cancelButton" text="Cancel" styleClass="user-secondary-button"/>
+                <Button fx:id="saveButton" text="Save" defaultButton="true" styleClass="user-primary-button"/>
             </HBox>
         </VBox>
     </content>
