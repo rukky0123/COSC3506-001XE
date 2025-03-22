@@ -8,15 +8,16 @@ import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 public class NavbarController implements Initializable {
 
-    @FXML
-    private ImageView logoImage;
+    @FXML private ImageView logoImage;
     @FXML private Hyperlink dashboardLink;
     @FXML private Hyperlink usersLink;
     @FXML private Hyperlink carsLink;
     @FXML private Hyperlink bookingsLink;
+    private Consumer<String> onNavigate;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -27,10 +28,29 @@ public class NavbarController implements Initializable {
             logoImage.setImage(image);
         }
 
-        // Optional: Add navigation logic here
-        dashboardLink.setOnAction(e -> System.out.println("Go to Dashboard"));
-        usersLink.setOnAction(e -> System.out.println("Go to Users"));
-        carsLink.setOnAction(e -> System.out.println("Go to Cars"));
-        bookingsLink.setOnAction(e -> System.out.println("Go to Bookings"));
+        dashboardLink.setOnAction(e -> {
+            if (onNavigate != null) {
+                onNavigate.accept("reports");
+            }
+        });
+        usersLink.setOnAction(e -> {
+            if (onNavigate != null) {
+                onNavigate.accept("users");
+            }
+        });
+        carsLink.setOnAction(e -> {
+            if (onNavigate != null) {
+                onNavigate.accept("cars");
+            }
+        });
+        bookingsLink.setOnAction(e -> {
+            if (onNavigate != null) {
+                onNavigate.accept("bookings");
+            }
+        });
+    }
+
+    public void setOnNavigate(Consumer<String> onNavigate) {
+        this.onNavigate = onNavigate;
     }
 }
