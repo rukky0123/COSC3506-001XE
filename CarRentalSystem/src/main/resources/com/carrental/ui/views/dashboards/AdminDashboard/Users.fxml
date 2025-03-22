@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/8.0"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.carrental.controllers.dashboards.AdminDashboard.UsersPageController"
+      styleClass="screen-container" alignment="TOP_CENTER" prefWidth="1000" prefHeight="800">
+
+    <Label text="Manage Users" styleClass="main-title"/>
+
+    <TableView fx:id="userTable" prefHeight="700" prefWidth="900">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+        <columns>
+            <TableColumn fx:id="nameCol" text="Username"/>
+            <TableColumn fx:id="emailCol" text="Email"/>
+            <TableColumn fx:id="addressCol" text="Role"/>
+            <TableColumn fx:id="phoneCol" text="Created At"/>
+            <TableColumn fx:id="actionCol" text=""/>
+        </columns>
+    </TableView>
+</VBox>

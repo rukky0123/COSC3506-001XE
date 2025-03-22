@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+
+<VBox prefWidth="1000.0" prefHeight="800.0" spacing="0" alignment="TOP_LEFT" stylesheets="@/com/carrental/ui/css/dashboard.css"
+      xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.carrental.controllers.dashboards.AdminDashboard.AdminDashboardController">
+
+    <!-- Include Navbar -->
+    <HBox prefWidth="1000.0" fx:id="navbarContainer"/>
+
+    <!-- Main Content Area -->
+    <StackPane fx:id="contentArea" VBox.vgrow="ALWAYS" styleClass="screen-container"/>
+
+</VBox>
