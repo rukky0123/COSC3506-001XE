@@ -15,7 +15,6 @@ public class MainApp extends Application {
         // Set full-screen mode
         primaryStage.setTitle("Harmony - Car Rental System");
         primaryStage.setMaximized(true); // Maximizes window on launch
-        primaryStage.setFullScreen(true); // Opens in full screen
 
         // Show the login screen by default
         SceneManager.showScene("login");

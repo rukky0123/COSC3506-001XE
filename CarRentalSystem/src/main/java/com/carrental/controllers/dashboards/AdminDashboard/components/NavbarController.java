@@ -2,7 +2,9 @@ package com.carrental.controllers.dashboards.AdminDashboard.components;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -18,6 +20,10 @@ public class NavbarController implements Initializable {
     @FXML private Hyperlink carsLink;
     @FXML private Hyperlink bookingsLink;
     private Consumer<String> onNavigate;
+    @FXML private Label welcomeLabel;
+    @FXML private Button logoutButton;
+    private Runnable onLogout;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,9 +54,23 @@ public class NavbarController implements Initializable {
                 onNavigate.accept("bookings");
             }
         });
+        // Logout action
+        logoutButton.setOnAction(e -> {
+            if (onLogout != null) {
+                onLogout.run();
+            }
+        });
     }
 
     public void setOnNavigate(Consumer<String> onNavigate) {
         this.onNavigate = onNavigate;
+    }
+
+    public void setOnLogout(Runnable onLogout) {
+        this.onLogout = onLogout;
+    }
+
+    public void setUsername(String name) {
+        welcomeLabel.setText("Welcome, " + name);
     }
 }

@@ -38,6 +38,12 @@ public class AdminDashboardController {
             // Get controller and setup navigation
             NavbarController navbarController = loader.getController();
             navbarController.setOnNavigate(this::handleNavigation);
+            navbarController.setOnLogout(this::handleLogout);
+
+            User user = UserSession.getLoggedInUser();
+            if (user != null) {
+                navbarController.setUsername(user.getUsername());
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

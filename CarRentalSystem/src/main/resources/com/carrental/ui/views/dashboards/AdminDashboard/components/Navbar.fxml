@@ -14,10 +14,16 @@
     </HBox>
 
     <!-- Navigation Links -->
-    <HBox spacing="20" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+    <HBox spacing="15" alignment="CENTER" HBox.hgrow="ALWAYS">
         <Hyperlink fx:id="dashboardLink" text="Dashboard" styleClass="nav-link"/>
         <Hyperlink fx:id="usersLink" text="Users" styleClass="nav-link"/>
         <Hyperlink fx:id="carsLink" text="Cars" styleClass="nav-link"/>
         <Hyperlink fx:id="bookingsLink" text="Bookings" styleClass="nav-link"/>
+
+    </HBox>
+
+    <HBox spacing="15" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+        <Label fx:id="welcomeLabel" styleClass="welcome-label"/>
+        <Button fx:id="logoutButton" text="Logout" styleClass="logout-button"/>
     </HBox>
 </HBox>

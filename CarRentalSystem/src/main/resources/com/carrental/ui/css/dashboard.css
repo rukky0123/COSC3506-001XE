@@ -87,3 +87,20 @@
     -fx-padding: 15px 30px;
     -fx-border-radius: 5px;
 }
+
+.welcome-label {
+    -fx-text-fill: white;
+    -fx-font-size: 1.1em;
+}
+
+.logout-button {
+    -fx-background-color: #e53e3e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 6px 12px;
+    -fx-background-radius: 5px;
+}
+.logout-button:hover {
+    -fx-background-color: #c53030;
+}
