@@ -29,7 +29,7 @@
 
 /* Main container */
 .screen-container {
-    -fx-padding: 5%;
+    -fx-padding: 10px;
     -fx-alignment: center;
 }
 
@@ -103,4 +103,35 @@
 }
 .logout-button:hover {
     -fx-background-color: #c53030;
+}
+
+.main-title {
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2d3748;
+    -fx-alignment: center;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-table-cell-border-color: #eee;
+}
+
+.table-column {
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 8px;
+}
+
+.button {
+    -fx-background-color: #4299e1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+.button:hover {
+    -fx-background-color: #2b6cb0;
 }
