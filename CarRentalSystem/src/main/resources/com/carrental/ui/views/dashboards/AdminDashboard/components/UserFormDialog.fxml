@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<DialogPane xmlns="http://javafx.com/javafx/8.0"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.carrental.controllers.dashboards.AdminDashboard.components.UserFormDialogController"
+            prefWidth="400" prefHeight="420"
+            styleClass="dialog-pane">
+
+    <content>
+        <VBox spacing="15" alignment="CENTER">
+            <padding>
+                <Insets top="25" right="25" bottom="25" left="25"/>
+            </padding>
+
+            <Label fx:id="formTitle" text="Add User" styleClass="main-title"/>
+
+            <TextField fx:id="usernameField" promptText="Username" styleClass="input-field"/>
+            <PasswordField fx:id="passwordField" promptText="Password" styleClass="input-field"/>
+            <TextField fx:id="emailField" promptText="Email" styleClass="input-field"/>
+            <ComboBox fx:id="roleBox" promptText="Select Role" styleClass="input-field"/>
+
+            <Label fx:id="errorLabel" textFill="red" styleClass="error-text"/>
+
+            <HBox spacing="15" alignment="CENTER">
+                <Button fx:id="cancelButton" text="Cancel" styleClass="secondary-button"/>
+                <Button fx:id="saveButton" text="Save" defaultButton="true" styleClass="button"/>
+            </HBox>
+        </VBox>
+    </content>
+</DialogPane>

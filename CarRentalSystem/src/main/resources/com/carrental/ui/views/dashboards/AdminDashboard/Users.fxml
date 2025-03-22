@@ -8,7 +8,20 @@
       fx:controller="com.carrental.controllers.dashboards.AdminDashboard.UsersPageController"
       styleClass="screen-container" alignment="TOP_CENTER" prefWidth="1000" prefHeight="800">
 
-    <Label text="Manage Users" styleClass="main-title"/>
+    <HBox alignment="CENTER" prefWidth="1000" spacing="10">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Manage Users" styleClass="main-title"/>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Add User" onAction="#handleAddUser"/>
+        </HBox>
+    </HBox>
 
     <TableView fx:id="userTable" prefHeight="700" prefWidth="900">
         <columnResizePolicy>
