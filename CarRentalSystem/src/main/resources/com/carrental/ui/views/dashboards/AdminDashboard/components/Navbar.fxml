@@ -23,7 +23,7 @@
     </HBox>
 
     <HBox spacing="15" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
-        <Label fx:id="welcomeLabel" styleClass="welcome-label"/>
+        <Label fx:id="welcomeLabel" styleClass="description-text"/>
         <Button fx:id="logoutButton" text="Logout" styleClass="logout-button"/>
     </HBox>
 </HBox>

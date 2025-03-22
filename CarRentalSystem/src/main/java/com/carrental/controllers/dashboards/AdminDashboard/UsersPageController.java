@@ -105,6 +105,9 @@ public class UsersPageController {
             UserFormDialogController controller = loader.getController();
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.setDialogPane(dialogPane);
+            dialog.getDialogPane().getStylesheets().add(
+                    getClass().getResource("/com/carrental/ui/css/dashboard.css").toExternalForm()
+            );
             dialog.initOwner(userTable.getScene().getWindow());
 
             controller.setUser(existingUser, user -> {
