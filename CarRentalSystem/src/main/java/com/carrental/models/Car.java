@@ -7,14 +7,16 @@ public class Car {
     private int year;
     private double pricePerDay;
     private boolean availability;
+    private String imagePath;
 
-    public Car(int carId, String make, String model, int year, double pricePerDay, boolean availability) {
+    public Car(int carId, String make, String model, int year, double pricePerDay, boolean availability, String imagePath) {
         this.carId = carId;
         this.make = make;
         this.model = model;
         this.year = year;
         this.pricePerDay = pricePerDay;
         this.availability = availability;
+        this.imagePath = imagePath;
     }
 
     public int getCarId() {
@@ -64,6 +66,9 @@ public class Car {
     public void setAvailability(boolean availability) {
         this.availability = availability;
     }
+
+    public String getImagePath() { return imagePath; }
+    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
 
     @Override
     public String toString() {

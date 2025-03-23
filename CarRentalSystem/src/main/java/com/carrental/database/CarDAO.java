@@ -24,7 +24,8 @@ public class CarDAO {
                         rs.getString("model"),
                         rs.getInt("year"),
                         rs.getDouble("price_per_day"),
-                        rs.getBoolean("availability")
+                        rs.getBoolean("availability"),
+                        rs.getString("image_path")
                 );
                 cars.add(car);
             }
@@ -37,7 +38,7 @@ public class CarDAO {
     }
 
     public static boolean insertCar(Car car) {
-        String query = "INSERT INTO CR_Inventory (make, model, year, price_per_day, availability) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO CR_Inventory (make, model, year, price_per_day, availability, image_path) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -47,6 +48,7 @@ public class CarDAO {
             stmt.setInt(3, car.getYear());
             stmt.setDouble(4, car.getPricePerDay());
             stmt.setBoolean(5, car.isAvailability());
+            stmt.setString(6, car.getImagePath());
 
             return stmt.executeUpdate() > 0;
 
@@ -57,7 +59,7 @@ public class CarDAO {
     }
 
     public static boolean updateCar(Car car) {
-        String query = "UPDATE CR_Inventory SET make = ?, model = ?, year = ?, price_per_day = ?, availability = ? WHERE car_id = ?";
+        String query = "UPDATE CR_Inventory SET make = ?, model = ?, year = ?, price_per_day = ?, availability = ?, image_path = ? WHERE car_id = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -67,7 +69,9 @@ public class CarDAO {
             stmt.setInt(3, car.getYear());
             stmt.setDouble(4, car.getPricePerDay());
             stmt.setBoolean(5, car.isAvailability());
-            stmt.setInt(6, car.getCarId());
+            stmt.setString(6, car.getImagePath());
+            stmt.setInt(7, car.getCarId());
+
 
             return stmt.executeUpdate() > 0;
 

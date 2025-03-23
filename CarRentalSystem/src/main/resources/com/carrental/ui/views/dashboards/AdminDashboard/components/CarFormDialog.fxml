@@ -2,6 +2,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
 
 <DialogPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -21,6 +22,10 @@
             <TextField fx:id="modelField" promptText="Model (e.g., Corolla)" styleClass="car-input-field"/>
             <TextField fx:id="yearField" promptText="Year (e.g., 2022)" styleClass="car-input-field"/>
             <TextField fx:id="priceField" promptText="Price per Day ($)" styleClass="car-input-field"/>
+
+            <Label text="Car Image" styleClass="car-input-label"/>
+            <ImageView fx:id="carImageView" fitWidth="150" fitHeight="100" preserveRatio="true"/>
+            <Button fx:id="uploadImageButton" text="Upload Image" styleClass="car-secondary-button"/>
 
             <ComboBox fx:id="availabilityBox" promptText="Availability" styleClass="car-input-field"/>
 
