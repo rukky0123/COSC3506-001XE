@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.carrental.controllers.auth.ResetPasswordController;
+import com.carrental.controllers.auth.SignupController;
+
 public class SceneManager {
     private static Stage primaryStage;
     private static final Map<String, Scene> scenes = new HashMap<>();
@@ -40,6 +43,15 @@ public class SceneManager {
 
             primaryStage.setScene(scene);
             primaryStage.show();
+            
+         // Manually call reset method if controller supports it
+            Object controller = controllers.get(name);
+            if (controller instanceof ResetPasswordController) {
+                ((ResetPasswordController) controller).resetAndShow();
+            }
+            if (controller instanceof SignupController) {
+                ((SignupController) controller).resetAndShow();
+            }
         } else {
             System.err.println("Scene not found: " + name);
         }

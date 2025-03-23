@@ -16,10 +16,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/21"
+
+<ScrollPane xmlns="http://javafx.com/javafx/8.0"
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.carrental.controllers.auth.SignupController">
-	<ScrollPane fitToWidth="true">
+	fx:controller="com.carrental.controllers.auth.SignupController"
+	fitToWidth="true" fitToHeight="true" style="-fx-background: #0D4F8B;">
+	<StackPane alignment="CENTER">
 		<VBox alignment="TOP_CENTER" maxHeight="1200.0" maxWidth="900.0"
 			minHeight="1200.0" minWidth="900.0" prefHeight="1200.0"
 			prefWidth="900.0" spacing="20" style="-fx-background-color: #0D4F8B;"
@@ -93,55 +95,64 @@
 								<ColumnConstraints minWidth="250" />
 							</columnConstraints>
 
-							<Label style="-fx-text-fill: white;" text="* First Name"
+							<Label style="-fx-text-fill: white;" text="* Username"
 								GridPane.columnIndex="0" GridPane.rowIndex="0" />
-							<TextField fx:id="firstNameField"
+							<TextField fx:id="usernameField"
 								GridPane.columnIndex="1" GridPane.rowIndex="0" />
-							<Label fx:id="errorFirstName" style="-fx-text-fill: red;"
+							<Label fx:id="errorUsername" style="-fx-text-fill: red;"
 								styleClass="error-text" GridPane.columnIndex="2"
 								GridPane.rowIndex="0" />
 
-							<Label style="-fx-text-fill: white;" text="* Last Name"
+
+							<Label style="-fx-text-fill: white;" text="* First Name"
 								GridPane.columnIndex="0" GridPane.rowIndex="1" />
-							<TextField fx:id="lastNameField"
+							<TextField fx:id="firstNameField"
 								GridPane.columnIndex="1" GridPane.rowIndex="1" />
-							<Label fx:id="errorLastName" style="-fx-text-fill: red;"
+							<Label fx:id="errorFirstName" style="-fx-text-fill: red;"
 								styleClass="error-text" GridPane.columnIndex="2"
 								GridPane.rowIndex="1" />
 
-							<Label style="-fx-text-fill: white;" text="* Email Address"
+							<Label style="-fx-text-fill: white;" text="* Last Name"
 								GridPane.columnIndex="0" GridPane.rowIndex="2" />
-							<TextField fx:id="emailField" GridPane.columnIndex="1"
-								GridPane.rowIndex="2" />
-							<Label fx:id="errorEmail" style="-fx-text-fill: red;"
+							<TextField fx:id="lastNameField"
+								GridPane.columnIndex="1" GridPane.rowIndex="2" />
+							<Label fx:id="errorLastName" style="-fx-text-fill: red;"
 								styleClass="error-text" GridPane.columnIndex="2"
 								GridPane.rowIndex="2" />
+
+							<Label style="-fx-text-fill: white;" text="* Email Address"
+								GridPane.columnIndex="0" GridPane.rowIndex="3" />
+							<TextField fx:id="emailField" GridPane.columnIndex="1"
+								GridPane.rowIndex="3" />
+							<Label fx:id="errorEmail" style="-fx-text-fill: red;"
+								styleClass="error-text" GridPane.columnIndex="2"
+								GridPane.rowIndex="3" />
 
 							<Label style="-fx-text-fill: white;"
 								text="* Confirm Email Address" GridPane.columnIndex="0"
-								GridPane.rowIndex="3" />
+								GridPane.rowIndex="4" />
 							<TextField fx:id="confirmEmailField"
-								GridPane.columnIndex="1" GridPane.rowIndex="3" />
+								GridPane.columnIndex="1" GridPane.rowIndex="4" />
 							<Label fx:id="errorConfirmEmail"
 								style="-fx-text-fill: red;" styleClass="error-text"
-								GridPane.columnIndex="2" GridPane.rowIndex="3" />
+								GridPane.columnIndex="2" GridPane.rowIndex="4" />
 
 							<Label style="-fx-text-fill: white;" text="* Password"
-								GridPane.columnIndex="0" GridPane.rowIndex="4" />
+								GridPane.columnIndex="0" GridPane.rowIndex="5" />
 							<PasswordField fx:id="passwordField"
-								GridPane.columnIndex="1" GridPane.rowIndex="4" />
+								GridPane.columnIndex="1" GridPane.rowIndex="5" />
 							<Label fx:id="errorPassword" style="-fx-text-fill: red;"
 								styleClass="error-text" GridPane.columnIndex="2"
-								GridPane.rowIndex="4" />
+								GridPane.rowIndex="5" />
 
 							<Label style="-fx-text-fill: white;"
 								text="* Confirm Password" GridPane.columnIndex="0"
-								GridPane.rowIndex="5" />
+								GridPane.rowIndex="6" />
 							<PasswordField fx:id="confirmPasswordField"
-								GridPane.columnIndex="1" GridPane.rowIndex="5" />
+								GridPane.columnIndex="1" GridPane.rowIndex="6" />
 							<Label fx:id="errorConfirmPassword"
 								style="-fx-text-fill: red;" styleClass="error-text"
-								GridPane.columnIndex="2" GridPane.rowIndex="5" />
+								GridPane.columnIndex="2" GridPane.rowIndex="6" />
 							<rowConstraints>
 								<RowConstraints />
 								<RowConstraints />
@@ -308,5 +319,5 @@
 				</VBox.margin>
 			</VBox>
 		</VBox>
-	</ScrollPane>
-</StackPane>
+	</StackPane>
+</ScrollPane>

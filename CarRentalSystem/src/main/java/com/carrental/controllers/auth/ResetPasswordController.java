@@ -36,6 +36,25 @@ public class ResetPasswordController {
             System.err.println("Error loading logo image.");
         }
     }
+    
+    @FXML
+    public void resetAndShow() {
+        clearFields();
+    }
+    
+    @FXML
+    private void clearFields() {
+        emailField.setText("");
+        otpField.setText("");
+        passwordField.setText("");
+        confirmPasswordField.setText("");
+
+        emailError.setText("");
+        otpError.setText("");
+        passwordError.setText("");
+        confirmPasswordError.setText("");
+        otpInfo.setText("");
+    }
 
     @FXML
     public void handleSendOtp() {
