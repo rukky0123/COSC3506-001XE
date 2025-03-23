@@ -18,17 +18,23 @@ import com.carrental.models.User;
 import com.carrental.models.UserSession;
 
 public class PolicyController {
-	
-	@FXML private ImageView logoImage;
-	
+
 	@FXML
-    public void initialize() {
-        // Load logo image
-        try {
-            Image image = new Image(getClass().getResource("/com/carrental/ui/assets/harmoney.jpg").toExternalForm());
-            logoImage.setImage(image);
-        } catch (Exception e) {
-            System.err.println("Error loading logo image.");
-        }
-    }
+	private ImageView logoImage;
+
+	@FXML
+	public void initialize() {
+		// Load logo image
+		try {
+			Image image = new Image(getClass().getResource("/com/carrental/ui/assets/harmoney.jpg").toExternalForm());
+			logoImage.setImage(image);
+		} catch (Exception e) {
+			System.err.println("Error loading logo image.");
+		}
+	}
+
+	@FXML
+	public void goToLogin() {
+		SceneManager.showScene("login");
+	}
 }

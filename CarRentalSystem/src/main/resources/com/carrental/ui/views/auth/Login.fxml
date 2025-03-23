@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <StackPane style="-fx-background-color: #0D4F8B;"
-	xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+	xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="com.carrental.controllers.auth.LoginController">
 
 	<VBox alignment="CENTER" maxHeight="600.0" maxWidth="600.0"
@@ -21,7 +21,8 @@
 
 		<!-- Logo Section -->
 		<HBox alignment="CENTER_LEFT" spacing="10">
-			<ImageView fx:id="logoImage" fitHeight="60.0" fitWidth="60.0" />
+			<ImageView fx:id="logoImage" fitHeight="60.0"
+				fitWidth="60.0" />
 			<Label
 				style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"
 				text="Harmoney" />
@@ -65,8 +66,8 @@
 
 					<Label prefWidth="75.0" style="-fx-text-fill: white;"
 						text="Password" />
-					<PasswordField fx:id="passwordField" prefWidth="325.0"
-						promptText="Enter Password" />
+					<PasswordField fx:id="passwordField"
+						prefWidth="325.0" promptText="Enter Password" />
 				</children>
 			</HBox>
 			<Label fx:id="passwordErrorLabel"
@@ -102,8 +103,7 @@
 						</HBox.margin>
 					</Hyperlink>
 					<Hyperlink onAction="#goToSignup"
-						style="-fx-text-fill: white; -fx-font-size: 14px;"
-						text="Sign Up" />
+						style="-fx-text-fill: white; -fx-font-size: 14px;" text="Sign Up" />
 				</children>
 				<VBox.margin>
 					<Insets left="100.0" right="100.0" />
@@ -115,8 +115,7 @@
 				<HBox>
 					<children>
 						<Hyperlink onAction="#goToPolicy"
-							style="-fx-text-fill: white;"
-							text="Policy and Terms">
+							style="-fx-text-fill: white;" text="Policy and Terms">
 							<HBox.margin>
 								<Insets right="100.0" />
 							</HBox.margin>
