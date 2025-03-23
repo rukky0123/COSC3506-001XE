@@ -20,8 +20,28 @@ CREATE TABLE IF NOT EXISTS CR_User (
     password VARCHAR(255) NOT NULL,
     role ENUM('Admin', 'Staff', 'Customer') NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    -- Additional Profile Fields
+    first_name VARCHAR(50) DEFAULT NULL,
+    last_name VARCHAR(50) DEFAULT NULL,
+    address1 VARCHAR(100) DEFAULT NULL,
+    address2 VARCHAR(100) DEFAULT NULL,
+    city VARCHAR(50) DEFAULT NULL,
+    province VARCHAR(50) DEFAULT NULL,
+    postal_code VARCHAR(20) DEFAULT NULL,
+    country VARCHAR(50) DEFAULT NULL,
+
+    -- Payment Information Fields
+    card_name VARCHAR(100) DEFAULT NULL,
+    card_number VARCHAR(20) DEFAULT NULL,
+    exp_month VARCHAR(5) DEFAULT NULL,
+    exp_year VARCHAR(5) DEFAULT NULL,
+    security_code VARCHAR(10) DEFAULT NULL,
+    card_postal VARCHAR(20) DEFAULT NULL,
+    card_country VARCHAR(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 -- Create Car Inventory Table
 CREATE TABLE IF NOT EXISTS CR_Inventory (
