@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane style="-fx-background-color: #a6e3e9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.controllers.auth.PolicyController">
+
+    <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true">
+        <content>
+            <VBox maxHeight="750.0" maxWidth="950.0" minHeight="750.0" minWidth="950.0" prefHeight="750.0" prefWidth="950.0" spacing="10" style="-fx-padding: 30;">
+                
+                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Policies &amp; Terms" />
+
+                <VBox>
+                    <children>
+                        <!-- Terms of Service -->
+                        <HBox>
+                            <children>
+                                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Terms of Service" />
+                            </children>
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox spacing="5">
+                            <Label style="-fx-font-weight: bold;" text="Eligibility:" />
+                            <Label text="Customers must be 21 or older and have a driver's license and credit card." />
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox spacing="5">
+                            <Label style="-fx-font-weight: bold;" text="Booking &amp; Payment:" />
+                            <Label text="Valid credit/debit card required. Payment is necessary to pick up vehicle." />
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox>
+                            <children>
+                                <Label text="Cancellations 24 hours or more before pick–up will be fully refunded. No–shows or late cancellations may be penalized." />
+                            </children>
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox>
+                            <children>
+                                <Label text="Harmoney cars can only be used for authorized reasons and must be returned in good condition, minus acceptable wear and tear." />
+                            </children>
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <!-- Privacy -->
+                        <HBox>
+                            <children>
+                                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Policy on Privacy" />
+                            </children>
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox spacing="5">
+                            <Label style="-fx-font-weight: bold;" text="Data Collection:" />
+                            <Label text="We collect your name, email address, contact information, and payment information to better our services." />
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox spacing="5">
+                            <Label style="-fx-font-weight: bold;" text="Data Usage:" />
+                            <Label text="Use your information strictly for bookings, customer service, and law compliance." />
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox spacing="5">
+                            <Label style="-fx-font-weight: bold;" text="Data Protection:" />
+                            <Label text="Harmoney encrypts financial and personal data." />
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <!-- Liability -->
+                        <HBox>
+                            <children>
+                                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Policy of Liability" />
+                            </children>
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox spacing="5">
+                            <Label style="-fx-font-weight: bold;" text="Damages and accidents:" />
+                            <Label text="The renter is responsible for any damage or theft during the rental period. Optional insurance provides further protection." />
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox spacing="5">
+                            <Label style="-fx-font-weight: bold;" text="Fines and Penalties:" />
+                            <Label text="Renters pay all rental–related fines, penalties, and tolls." />
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox spacing="5">
+                            <Label style="-fx-font-weight: bold;" text="Breakdowns:" />
+                            <Label text="Please call Harmoney’s 24/7 customer service immediately if the car breaks down. Fixes that violate this agreement will not be paid for." />
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <!-- Refunds -->
+                        <HBox>
+                            <children>
+                                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Policy on Refunds" />
+                            </children>
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox spacing="5">
+                            <Label style="-fx-font-weight: bold;" text="No–show Policy:" />
+                            <Label text="Harmoney may forfeit the booking fee if not notified." />
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox spacing="5">
+                            <Label style="-fx-font-weight: bold;" text="Early Returns:" />
+                            <Label text="Returned cars before rental time are non–refundable." />
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <!-- Contact -->
+                        <HBox>
+                            <children>
+                                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Contact Us :" />
+                            </children>
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                        <HBox>
+                            <children>
+                                <Label text="For questions about our policies, please contact Harmoney's customer service staff at support@harmoneycarrentals.com or 1–800–HARMONEY." />
+                            </children>
+                            <padding><Insets bottom="5.0" top="5.0" /></padding>
+                        </HBox>
+
+                    </children>
+                    <VBox.margin><Insets left="20.0" /></VBox.margin>
+                </VBox>
+            </VBox>
+        </content>
+    </ScrollPane>
+</StackPane>

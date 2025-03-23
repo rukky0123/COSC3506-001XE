@@ -128,4 +128,10 @@ public class LoginController {
     public void goToSignup() {
         SceneManager.showScene("signup");
     }
+    
+    @FXML
+    public void goToPolicy() {
+        SceneManager.showScene("policy");
+    }
+
 }

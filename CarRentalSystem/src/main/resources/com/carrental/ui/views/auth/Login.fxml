@@ -1,47 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<StackPane prefWidth="1000.0" prefHeight="800.0" stylesheets="@/com/carrental/ui/css/auth.css"
-           xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.carrental.controllers.auth.LoginController">
+<StackPane style="-fx-background-color: #0D4F8B;"
+	xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.carrental.controllers.auth.LoginController">
 
-    <!-- Centered VBox Container -->
-    <VBox alignment="CENTER" spacing="20" styleClass="screen-container">
+	<VBox alignment="CENTER" maxHeight="600.0" maxWidth="600.0"
+		minHeight="600.0" minWidth="600.0" prefHeight="600" prefWidth="600"
+		spacing="20">
 
-        <!-- Logo -->
-        <ImageView fx:id="logoImage" fitWidth="120.0" fitHeight="120.0"/>
+		<!-- Logo Section -->
+		<HBox alignment="CENTER_LEFT" spacing="10">
+			<ImageView fx:id="logoImage" fitHeight="60.0" fitWidth="60.0" />
+			<Label
+				style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"
+				text="Harmoney" />
+			<VBox.margin>
+				<Insets left="25.0" />
+			</VBox.margin>
+		</HBox>
 
-        <!-- Branding -->
-        <Label text="Harmony" styleClass="logo-text"/>
-        <Label text="Log in Your Account" styleClass="main-title"/>
-        <Label text="Star Your Journey Today!" styleClass="sub-title"/>
-        <Label text="Ready to hit the road? Let’s get you signed in to explore the best rides tailored just for you."
-               wrapText="true" styleClass="description-text"/>
+		<!-- Headings -->
+		<VBox alignment="CENTER" spacing="10">
+			<Label style="-fx-text-fill: white; -fx-font-size: 28px;"
+				text="Log in Your Account" />
+			<Label
+				style="-fx-font-size: 16px; -fx-text-fill: white; -fx-font-weight: bold;"
+				text="Star Your Journey Today !" />
+			<Label maxWidth="400"
+				style="-fx-text-fill: white; -fx-font-size: 14px;"
+				text="Ready to hit the road? Let’s get you signed in to explore the best rides tailored just for you."
+				wrapText="true" />
+		</VBox>
 
-        <!-- User ID -->
-        <VBox alignment="CENTER" spacing="5" maxWidth="500.0">
-            <Label text="User Id" styleClass="input-label"/>
-            <TextField fx:id="usernameField" styleClass="input-field"/>
-            <Label fx:id="userErrorLabel" text="Invalid User ID. Please try again."
-                   styleClass="error-text" visible="false"/>
-        </VBox>
+		<!-- Login Fields -->
+		<VBox alignment="CENTER_LEFT" maxWidth="400" spacing="10">
+			<HBox>
+				<children>
+					<Label prefWidth="75.0" style="-fx-text-fill: white;"
+						text="User Id" />
+					<TextField fx:id="usernameField" prefWidth="325.0"
+						promptText="Enter User ID" />
+				</children>
+			</HBox>
+			<Label fx:id="userErrorLabel"
+				style="-fx-text-fill: orange; -fx-font-size: 12px;"
+				text="Invalid User ID. Please try again." visible="false">
+				<VBox.margin>
+					<Insets left="75.0" />
+				</VBox.margin>
+			</Label>
+			<HBox>
+				<children>
 
-        <!-- Password -->
-        <VBox alignment="CENTER" spacing="5" maxWidth="500.0">
-            <Label text="Password" styleClass="input-label"/>
-            <PasswordField fx:id="passwordField" styleClass="input-field"/>
-            <Label fx:id="passwordErrorLabel" text="Incorrect password. Please try again."
-                   styleClass="error-text" visible="false"/>
-        </VBox>
+					<Label prefWidth="75.0" style="-fx-text-fill: white;"
+						text="Password" />
+					<PasswordField fx:id="passwordField" prefWidth="325.0"
+						promptText="Enter Password" />
+				</children>
+			</HBox>
+			<Label fx:id="passwordErrorLabel"
+				style="-fx-text-fill: orange; -fx-font-size: 12px;"
+				text="Incorrect password. Please try again." visible="false">
+				<VBox.margin>
+					<Insets left="75.0" />
+				</VBox.margin>
+			</Label>
+		</VBox>
 
-        <!-- Buttons -->
-        <VBox alignment="CENTER" spacing="10">
-            <Button text="Login" styleClass="login-button" onAction="#handleLogin"/>
-            <Label text="Forgot password?" styleClass="forgot-password"/>
-            <Button text="Sign Up" styleClass="signup-button" onAction="#goToSignup"/>
-        </VBox>
-    </VBox>
+		<!-- Action Buttons -->
+		<VBox alignment="CENTER" spacing="10">
+			<HBox alignment="TOP_RIGHT">
+				<children>
+					<Button onAction="#handleLogin"
+						style="-fx-border-color: gold; -fx-padding: 5 20 5 20;"
+						text="Login" textAlignment="CENTER" />
+				</children>
+				<opaqueInsets>
+					<Insets />
+				</opaqueInsets>
+				<VBox.margin>
+					<Insets left="100.0" right="100.0" />
+				</VBox.margin>
+			</HBox>
+			<HBox>
+				<children>
+					<Hyperlink style="-fx-text-fill: white;"
+						text="Forgot password ?">
+						<HBox.margin>
+							<Insets right="100.0" />
+						</HBox.margin>
+					</Hyperlink>
+					<Hyperlink onAction="#goToSignup"
+						style="-fx-text-fill: white; -fx-font-size: 14px;"
+						text="Sign Up" />
+				</children>
+				<VBox.margin>
+					<Insets left="100.0" right="100.0" />
+				</VBox.margin>
+			</HBox>
+		</VBox>
+		<VBox alignment="CENTER" spacing="10">
+			<children>
+				<HBox>
+					<children>
+						<Hyperlink onAction="#goToPolicy"
+							style="-fx-text-fill: white;"
+							text="Policy and Terms">
+							<HBox.margin>
+								<Insets right="100.0" />
+							</HBox.margin>
+						</Hyperlink>
+					</children>
+					<VBox.margin>
+						<Insets left="100.0" right="100.0" />
+					</VBox.margin>
+				</HBox>
+			</children>
+		</VBox>
+
+	</VBox>
 </StackPane>
