@@ -96,7 +96,8 @@
 			</HBox>
 			<HBox>
 				<children>
-					<Hyperlink style="-fx-text-fill: white;"
+					<Hyperlink onAction="#goToResetPassword"
+						style="-fx-text-fill: white; -fx-font-size: 14px;"
 						text="Forgot password ?">
 						<HBox.margin>
 							<Insets right="100.0" />

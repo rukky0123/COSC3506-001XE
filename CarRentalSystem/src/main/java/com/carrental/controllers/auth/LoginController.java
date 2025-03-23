@@ -133,5 +133,10 @@ public class LoginController {
     public void goToPolicy() {
         SceneManager.showScene("policy");
     }
+    
+    @FXML
+    public void goToResetPassword() {
+        SceneManager.showScene("resetpassword");
+    }
 
 }
