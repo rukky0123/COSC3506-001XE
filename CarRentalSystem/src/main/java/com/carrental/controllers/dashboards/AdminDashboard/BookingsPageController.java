@@ -17,7 +17,7 @@ import java.util.List;
 
 public class BookingsPageController {
 
-    @FXML private TableView<Booking> bookingTable;
+    @FXML TableView<Booking> bookingTable;
     @FXML private TableColumn<Booking, Integer> bookingIdCol;
     @FXML private TableColumn<Booking, String> usernameCol;
     @FXML private TableColumn<Booking, String> carNameCol;
@@ -107,9 +107,17 @@ public class BookingsPageController {
         }
     }
 
-    private void refreshTable() {
+    void refreshTable() {
         List<Booking> bookings = BookingDAO.getAllBookings();
         bookingTable.setItems(FXCollections.observableArrayList(bookings));
+    }
+
+    public TableView<Booking> getBookingTable() {
+        return bookingTable;
+    }
+
+    public void callRefreshTable() {
+        refreshTable(); // internal method
     }
 
 }

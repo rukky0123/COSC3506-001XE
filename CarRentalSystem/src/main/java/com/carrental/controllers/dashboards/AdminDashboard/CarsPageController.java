@@ -14,7 +14,7 @@ import java.util.List;
 
 public class CarsPageController {
 
-    @FXML private TableView<Car> carTable;
+    @FXML TableView<Car> carTable;
     @FXML private TableColumn<Car, String> makeCol;
     @FXML private TableColumn<Car, String> modelCol;
     @FXML private TableColumn<Car, Integer> yearCol;
@@ -123,5 +123,13 @@ public class CarsPageController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public TableView<Car> getCarTable() {
+        return carTable;
+    }
+
+    public void callRefreshTable() {
+        refreshTable();
     }
 }
