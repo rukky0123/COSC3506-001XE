@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.carrental.controllers.dashboards.AdminDashboard.components.CarFormDialogController"
+            prefWidth="440" prefHeight="500"
+            styleClass="car-dialog-pane">
+
+    <content>
+        <VBox spacing="18" alignment="CENTER">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <Label fx:id="formTitle" text="Add Car" styleClass="car-dialog-title"/>
+
+            <TextField fx:id="makeField" promptText="Make (e.g., Toyota)" styleClass="car-input-field"/>
+            <TextField fx:id="modelField" promptText="Model (e.g., Corolla)" styleClass="car-input-field"/>
+            <TextField fx:id="yearField" promptText="Year (e.g., 2022)" styleClass="car-input-field"/>
+            <TextField fx:id="priceField" promptText="Price per Day ($)" styleClass="car-input-field"/>
+
+            <ComboBox fx:id="availabilityBox" promptText="Availability" styleClass="car-input-field"/>
+
+            <Label fx:id="errorLabel" styleClass="car-error-text"/>
+
+            <HBox spacing="15" alignment="CENTER">
+                <Button fx:id="cancelButton" text="Cancel" styleClass="car-secondary-button"/>
+                <Button fx:id="saveButton" text="Save" defaultButton="true" styleClass="car-primary-button"/>
+            </HBox>
+        </VBox>
+    </content>
+</DialogPane>

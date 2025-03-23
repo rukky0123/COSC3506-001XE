@@ -128,10 +128,6 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0.3, 0, 4);
 }
 
-/* ======================= */
-/* NEW STYLES FOR MODAL UI */
-/* ======================= */
-
 .booking-dialog-pane {
     -fx-background-color: white;
     -fx-background-radius: 14;
@@ -203,10 +199,6 @@
     -fx-padding: 5px 0 10px 0;
 }
 
-/* ====================== */
-/* Styles for User Dialog */
-/* ====================== */
-
 .user-dialog-pane {
     -fx-background-color: white;
     -fx-background-radius: 14;
@@ -256,6 +248,59 @@
 }
 
 .user-error-text {
+    -fx-text-fill: #e53e3e;
+    -fx-font-size: 13px;
+}
+
+.car-dialog-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 10, 0.3, 0, 5);
+}
+
+.car-dialog-title {
+    -fx-font-size: 24px;
+    -fx-text-fill: #2d3748;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10 0;
+}
+
+.car-input-field {
+    -fx-pref-width: 300px;
+    -fx-padding: 8px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cbd5e0;
+    -fx-border-radius: 5px;
+    -fx-font-size: 14px;
+    -fx-background-color: white;
+}
+
+.car-primary-button {
+    -fx-background-color: #3182ce;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-padding: 6px 14px;
+}
+.car-primary-button:hover {
+    -fx-background-color: #2c5282;
+}
+
+.car-secondary-button {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #2d3748;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-padding: 6px 14px;
+}
+.car-secondary-button:hover {
+    -fx-background-color: #cbd5e0;
+}
+
+.car-error-text {
     -fx-text-fill: #e53e3e;
     -fx-font-size: 13px;
 }
