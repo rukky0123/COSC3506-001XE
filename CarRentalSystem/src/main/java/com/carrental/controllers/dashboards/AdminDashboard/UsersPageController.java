@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UsersPageController {
 
-    @FXML private TableView<User> userTable;
+    @FXML TableView<User> userTable;
     @FXML private TableColumn<User, String> nameCol;
     @FXML private TableColumn<User, String> emailCol;
     @FXML private TableColumn<User, String> addressCol; // Using 'role'
@@ -124,5 +124,9 @@ public class UsersPageController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public TableView<User> getUserTable() {
+        return userTable;
     }
 }
