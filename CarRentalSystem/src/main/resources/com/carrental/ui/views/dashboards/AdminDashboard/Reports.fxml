@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.carrental.controllers.dashboards.AdminDashboard.ReportsPageController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="700.0" prefWidth="900.0">
 
-    <Label text="REPORTS PAGE" />
+    <!-- Title Label -->
+    <Label text="Car Rental Reports" layoutX="350" layoutY="10"
+           style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
 
+    <!-- Dropdown to select report type -->
+    <Label text="Select Report:" layoutX="50" layoutY="50"/>
+    <ChoiceBox fx:id="reportChoiceBox" layoutX="150" layoutY="50" prefWidth="250"/>
+
+    <!-- Radio Buttons to choose chart type -->
+    <Label text="Chart Type:" layoutX="450" layoutY="50"/>
+    
+    <RadioButton fx:id="barChartRadio" text="Bar Chart" layoutX="530" layoutY="50"/>
+    <RadioButton fx:id="lineChartRadio" text="Line Chart" layoutX="630" layoutY="50"/>
+    <RadioButton fx:id="pieChartRadio" text="Pie Chart" layoutX="730" layoutY="50"/>
+
+    <!-- Table View for Report Data -->
+    <TableView fx:id="reportTable" layoutX="50" layoutY="100" prefWidth="800" prefHeight="250">
+        <columns>
+            <TableColumn fx:id="column1" text="Category" prefWidth="400"/>
+            <TableColumn fx:id="column2" text="Value" prefWidth="400"/>
+        </columns>
+    </TableView>
+
+    <!-- Dynamic Chart Display -->
+    <StackPane fx:id="chartContainer" layoutX="50" layoutY="370" prefWidth="800" prefHeight="300"/>
 </AnchorPane>
