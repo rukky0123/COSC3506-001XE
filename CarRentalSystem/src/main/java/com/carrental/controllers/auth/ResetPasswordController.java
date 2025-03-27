@@ -19,12 +19,13 @@ import java.util.TimerTask;
 
 public class ResetPasswordController {
 
-    @FXML private ImageView logoImage;
-    @FXML private TextField emailField, otpField;
-    @FXML private PasswordField passwordField, confirmPasswordField;
-    @FXML private Label emailError, otpInfo, otpError, passwordError, confirmPasswordError;
+    @FXML public ImageView logoImage;
+    @FXML public TextField emailField;
+    @FXML public TextField otpField;
+    @FXML public PasswordField passwordField, confirmPasswordField;
+    @FXML public Label emailError, otpInfo, otpError, passwordError, confirmPasswordError;
 
-    private String generatedOtp;
+    public String generatedOtp;
     private Timer otpTimer;
 
     @FXML
@@ -117,7 +118,8 @@ public class ResetPasswordController {
              PreparedStatement stmt = conn.prepareStatement("SELECT user_id FROM CR_User WHERE email = ?")) {
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
-            return rs.next();
+            boolean exists = rs.next();
+            return exists;
         } catch (SQLException e) {
             emailError.setText("Database error. Please try again.");
             return false;
@@ -135,7 +137,7 @@ public class ResetPasswordController {
         }
     }
 
-    private String hashPassword(String password) {
+    public String hashPassword(String password) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA-256");
             byte[] hash = md.digest(password.getBytes());
@@ -158,20 +160,20 @@ public class ResetPasswordController {
         emailError.setText(""); otpError.setText(""); passwordError.setText(""); confirmPasswordError.setText("");
     }
 
-    private void showOtpDialog(String otp) {
+    public void showOtpDialog(String otp) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("OTP Code");
         alert.setHeaderText("Your OTP Code");
         alert.setContentText("Use this code to reset your password: " + otp);
         alert.showAndWait();
     }
-    
-    private void showAlert(String title, String content) {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setTitle(title);
-		alert.setContentText(content);
-		alert.showAndWait();
-	}
+
+    public void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 
     @FXML
     public void goToLogin() {

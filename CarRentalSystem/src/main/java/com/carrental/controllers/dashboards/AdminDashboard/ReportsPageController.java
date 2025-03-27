@@ -13,48 +13,50 @@ import javafx.stage.FileChooser;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.AbstractMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ReportsPageController {
 
 	@FXML
-	private ChoiceBox<String> reportChoiceBox;
+	public ChoiceBox<String> reportChoiceBox;
 	@FXML
-	private RadioButton barChartRadio, lineChartRadio, pieChartRadio;
+	public RadioButton barChartRadio, lineChartRadio, pieChartRadio;
 	@FXML
-	private TableView<AbstractMap.SimpleEntry<String, ?>> reportTable;
+	public TableView<AbstractMap.SimpleEntry<String, ?>> reportTable;
 	@FXML
-	private TableColumn<AbstractMap.SimpleEntry<String, ?>, String> column1;
+	public TableColumn<AbstractMap.SimpleEntry<String, ?>, String> column1;
 	@FXML
-	private TableColumn<AbstractMap.SimpleEntry<String, ?>, Number> column2;
+	public TableColumn<AbstractMap.SimpleEntry<String, ?>, Number> column2;
 	@FXML
-	private Hyperlink revenueReportLink, rentalsReportLink, usersReportLink;
+	public Hyperlink revenueReportLink, rentalsReportLink, usersReportLink;
 	@FXML
-	private StackPane chartContainer;
+	public StackPane chartContainer;
 
 	@FXML
-	private Label customerCountLabel;
+	public Label customerCountLabel;
 	@FXML
-	private Label staffCountLabel;
+	public Label staffCountLabel;
 	@FXML
-	private Label adminCountLabel;
+	public Label adminCountLabel;
 	@FXML
-	private Label totalRidesLabel;
+	public Label totalRidesLabel;
 	@FXML
-	private Label totalProfitLabel;
+	public Label totalProfitLabel;
 	@FXML
-	private Label totalTaxLabel;
+	public Label totalTaxLabel;
 	@FXML
-	private Label carsRentedLabel;
+	public Label carsRentedLabel;
 	@FXML
-	private Label carsInMaintenanceLabel;
+	public Label carsInMaintenanceLabel;
 	@FXML
-	private Label availableCarsLabel;
+	public Label availableCarsLabel;
+	private CarDAO carDAO;
 
-	private CarDAO carDAO = new CarDAO();
+	public void setCarDAO(CarDAO carDAO) {
+	    this.carDAO = carDAO;
+	}
+
 	private ToggleGroup chartTypeToggleGroup;
 
 	@FXML
@@ -69,11 +71,12 @@ public class ReportsPageController {
 		barChartRadio.setToggleGroup(chartTypeToggleGroup);
 		lineChartRadio.setToggleGroup(chartTypeToggleGroup);
 		pieChartRadio.setToggleGroup(chartTypeToggleGroup);
-
 		pieChartRadio.setSelected(true);
 
-		reportChoiceBox.setItems(FXCollections.observableArrayList("Car Usage Report", "Monthly Rentals Report",
-				"Revenue Report", "Customer Booking Report", "Car Inventory Report"));
+		reportChoiceBox.setItems(FXCollections.observableArrayList(
+			"Car Usage Report", "Monthly Rentals Report",
+			"Revenue Report", "Customer Booking Report", "Car Inventory Report"
+		));
 
 		reportChoiceBox.setOnAction(event -> generateReport());
 		chartTypeToggleGroup.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> generateReport());
@@ -83,7 +86,7 @@ public class ReportsPageController {
 		usersReportLink.setOnAction(event -> downloadCSV("Customer Booking Report"));
 	}
 
-	private void populateDashboardCounts() throws SQLException {
+	public void populateDashboardCounts() throws SQLException {
 		Map<String, Integer> userCounts = carDAO.getUserCounts();
 		customerCountLabel.setText("Customers: " + userCounts.getOrDefault("Customer", 0));
 		staffCountLabel.setText("Staff: " + userCounts.getOrDefault("Staff", 0));
@@ -100,11 +103,9 @@ public class ReportsPageController {
 		availableCarsLabel.setText("Available Cars: " + carStats.getOrDefault("available", 0));
 	}
 
-	private void generateReport() {
+	public void generateReport() {
 		String selectedReport = reportChoiceBox.getValue();
-		if (selectedReport == null)
-			return;
-
+		if (selectedReport == null) return;
 		try {
 			Map<String, ?> reportData = fetchReportData(selectedReport);
 			displayTableData(reportData);
@@ -114,54 +115,44 @@ public class ReportsPageController {
 		}
 	}
 
-	private Map<String, ?> fetchReportData(String reportType) throws SQLException {
+	public Map<String, ?> fetchReportData(String reportType) throws SQLException {
 		switch (reportType) {
-		case "Car Usage Report":
-			return carDAO.getCarUsageReport();
-		case "Monthly Rentals Report":
-			return carDAO.getMonthlyRentalsReport();
-		case "Revenue Report":
-			return carDAO.getRevenueReport();
-		case "Customer Booking Report":
-			return carDAO.getCustomerBookingReport();
-		case "Car Inventory Report":
-			return carDAO.getCarInventoryReport();
-		default:
-			return null;
+			case "Car Usage Report": return carDAO.getCarUsageReport();
+			case "Monthly Rentals Report": return carDAO.getMonthlyRentalsReport();
+			case "Revenue Report": return carDAO.getRevenueReport();
+			case "Customer Booking Report": return carDAO.getCustomerBookingReport();
+			case "Car Inventory Report": return carDAO.getCarInventoryReport();
+			default: return null;
 		}
 	}
 
-	private Map<String, String> fetchReportDataAsString(String reportType) throws SQLException {
+	public Map<String, String> fetchReportDataAsString(String reportType) throws SQLException {
 		switch (reportType) {
-		case "Revenue Report":
-			return carDAO.getRevenueReportAsString();
-		case "Monthly Rentals Report":
-			return carDAO.getMonthlyRentalsReportAsString();
-		case "Customer Booking Report":
-			return carDAO.getCustomerBookingReportAsString();
-		default:
-			throw new SQLException("Unknown report type");
+			case "Revenue Report": return carDAO.getRevenueReportAsString();
+			case "Monthly Rentals Report": return carDAO.getMonthlyRentalsReportAsString();
+			case "Customer Booking Report": return carDAO.getCustomerBookingReportAsString();
+			default: throw new SQLException("Unknown report type");
 		}
 	}
 
-	private void displayTableData(Map<String, ?> data) {
+	public void displayTableData(Map<String, ?> data) {
 		ObservableList<AbstractMap.SimpleEntry<String, ?>> tableData = FXCollections.observableArrayList(
-				data.entrySet().stream().map(entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), entry.getValue()))
-						.collect(Collectors.toList()));
-
+			data.entrySet().stream()
+				.map(entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), entry.getValue()))
+				.collect(Collectors.toList())
+		);
 		column1.setCellValueFactory(new PropertyValueFactory<>("key"));
 		column2.setCellValueFactory(new PropertyValueFactory<>("value"));
 		reportTable.setItems(tableData);
 	}
 
-	private void downloadCSV(String reportType) {
+	public void downloadCSV(String reportType) {
 		try {
 			Map<String, String> data = fetchReportDataAsString(reportType);
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Save CSV File");
 			fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
 			java.io.File file = fileChooser.showSaveDialog(null);
-
 			if (file != null) {
 				try (FileWriter writer = new FileWriter(file)) {
 					writer.append("Category,Value\n");
@@ -177,21 +168,15 @@ public class ReportsPageController {
 
 	private void displayChart(Map<String, ?> data, String reportType) {
 		chartContainer.getChildren().clear();
-
-		if (barChartRadio.isSelected()) {
-			displayBarChart(data, reportType);
-		} else if (lineChartRadio.isSelected()) {
-			displayLineChart(data, reportType);
-		} else if (pieChartRadio.isSelected()) {
-			displayPieChart(data);
-		}
+		if (barChartRadio.isSelected()) displayBarChart(data, reportType);
+		else if (lineChartRadio.isSelected()) displayLineChart(data, reportType);
+		else if (pieChartRadio.isSelected()) displayPieChart(data);
 	}
 
 	private void displayBarChart(Map<String, ?> data, String reportType) {
 		BarChart<String, Number> barChart = new BarChart<>(new CategoryAxis(), new NumberAxis());
 		XYChart.Series<String, Number> series = new XYChart.Series<>();
 		series.setName(reportType);
-
 		for (Map.Entry<String, ?> entry : data.entrySet()) {
 			series.getData().add(new XYChart.Data<>(entry.getKey(), (Number) entry.getValue()));
 		}
@@ -203,7 +188,6 @@ public class ReportsPageController {
 		LineChart<String, Number> lineChart = new LineChart<>(new CategoryAxis(), new NumberAxis());
 		XYChart.Series<String, Number> series = new XYChart.Series<>();
 		series.setName(reportType);
-
 		for (Map.Entry<String, ?> entry : data.entrySet()) {
 			series.getData().add(new XYChart.Data<>(entry.getKey(), (Number) entry.getValue()));
 		}
@@ -211,26 +195,13 @@ public class ReportsPageController {
 		chartContainer.getChildren().add(lineChart);
 	}
 
-	/*
-	 * private void displayPieChart(Map<String, ?> data) { PieChart pieChart = new
-	 * PieChart(); // Set preferred size pieChart.setPrefWidth(800); // or any value
-	 * you want pieChart.setPrefHeight(800); for (Map.Entry<String, ?> entry :
-	 * data.entrySet()) { pieChart.getData().add(new PieChart.Data(entry.getKey(),
-	 * ((Number) entry.getValue()).doubleValue())); }
-	 * chartContainer.getChildren().add(pieChart); }
-	 */
-
 	private void displayPieChart(Map<String, ?> data) {
 		PieChart pieChart = new PieChart();
-
-		// Bind size to the chartContainer's size
 		pieChart.prefWidthProperty().bind(chartContainer.widthProperty());
 		pieChart.prefHeightProperty().bind(chartContainer.heightProperty());
-
 		for (Map.Entry<String, ?> entry : data.entrySet()) {
 			pieChart.getData().add(new PieChart.Data(entry.getKey(), ((Number) entry.getValue()).doubleValue()));
 		}
-
 		chartContainer.getChildren().clear();
 		chartContainer.getChildren().add(pieChart);
 	}

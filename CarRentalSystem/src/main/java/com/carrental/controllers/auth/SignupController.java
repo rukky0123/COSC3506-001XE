@@ -16,18 +16,18 @@ import java.sql.*;
 
 public class SignupController {
 
-    @FXML private TextField usernameField;
-    @FXML private TextField firstNameField, lastNameField, emailField, confirmEmailField;
-    @FXML private PasswordField passwordField, confirmPasswordField;
-    @FXML private TextField address1Field, address2Field, cityField, provinceField, postalCodeField, countryField;
-    @FXML private TextField cardNameField, cardNumberField, expMonthField, expYearField, securityCodeField, cardPostalField, cardCountryField;
+    @FXML public TextField usernameField;
+    @FXML public TextField firstNameField, lastNameField, emailField, confirmEmailField;
+    @FXML public PasswordField passwordField, confirmPasswordField;
+    @FXML public TextField address1Field, address2Field, cityField, provinceField, postalCodeField, countryField;
+    @FXML public TextField cardNameField, cardNumberField, expMonthField, expYearField, securityCodeField, cardPostalField, cardCountryField;
 
-    @FXML private Label errorUsername, errorFirstName, errorLastName, errorEmail, errorConfirmEmail;
-    @FXML private Label errorPassword, errorConfirmPassword, errorAddress1, errorCity;
-    @FXML private Label errorProvince, errorZip, errorCountry;
-    @FXML private Label errorCardName, errorCardNumber, errorExp, errorCvv, errorCardZip, errorCardCountry;
+    @FXML public Label errorUsername, errorFirstName, errorLastName, errorEmail, errorConfirmEmail;
+    @FXML public Label errorPassword, errorConfirmPassword, errorAddress1, errorCity;
+    @FXML public Label errorProvince, errorZip, errorCountry;
+    @FXML public Label errorCardName, errorCardNumber, errorExp, errorCvv, errorCardZip, errorCardCountry;
 
-    @FXML private ImageView logoImage;
+    @FXML public ImageView logoImage;
 
     @FXML
     public void initialize() {
@@ -213,7 +213,7 @@ public class SignupController {
         }
     }
 
-    private String hashPassword(String password) {
+    public String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hash = md.digest(password.getBytes());
@@ -227,7 +227,7 @@ public class SignupController {
         }
     }
 
-    private void showAlert(String title, String content) {
+    public void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setContentText(content);

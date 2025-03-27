@@ -19,8 +19,7 @@ import com.carrental.models.UserSession;
 
 public class PolicyController {
 
-	@FXML
-	private ImageView logoImage;
+	@FXML public ImageView logoImage;
 
 	@FXML
 	public void initialize() {

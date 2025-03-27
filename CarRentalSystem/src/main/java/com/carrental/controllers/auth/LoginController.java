@@ -18,11 +18,11 @@ import com.carrental.models.User;
 import com.carrental.models.UserSession;
 
 public class LoginController {
-    @FXML private TextField usernameField;
-    @FXML private PasswordField passwordField;
-    @FXML private Label userErrorLabel;
-    @FXML private Label passwordErrorLabel;
-    @FXML private ImageView logoImage;
+    @FXML public TextField usernameField;
+    @FXML public PasswordField passwordField;
+    @FXML public Label userErrorLabel;
+    @FXML public Label passwordErrorLabel;
+    @FXML public ImageView logoImage;
 
     @FXML
     public void initialize() {
@@ -102,7 +102,7 @@ public class LoginController {
         }
     }
 
-    private String hashPassword(String password) {
+    public String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hash = md.digest(password.getBytes());
