@@ -25,6 +25,16 @@
         <!-- JavaFX Modules -->
         <dependency>
             <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
         </dependency>
@@ -33,6 +43,7 @@
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
         </dependency>
+
         <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -79,6 +90,9 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.carrental.MainApp</mainClass>
+                    <jvmArgs>
+                        --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.base
+                    </jvmArgs>
                 </configuration>
                 <executions>
                     <execution>
@@ -111,6 +125,7 @@
                 </configuration>
             </plugin>
 
+            <!-- Test Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
