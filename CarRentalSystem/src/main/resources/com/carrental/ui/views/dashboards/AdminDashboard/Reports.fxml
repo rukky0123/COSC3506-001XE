@@ -35,17 +35,17 @@
                      <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="100 Users" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                      <StackPane style="-fx-background-color: lightblue;" GridPane.rowIndex="1">
                         <children>
-                           <Label style="-fx-padding: 40;" text="Customers: 88" />
+                           <Label style="-fx-padding: 40;" fx:id="customerCountLabel" text="Customers: " />
                         </children>
                      </StackPane>
                      <StackPane style="-fx-background-color: lightblue;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                         <children>
-                           <Label style="-fx-padding: 40;" text="Staff: 10" />
+                           <Label style="-fx-padding: 40;" fx:id="staffCountLabel" text="Staff: " />
                         </children>
                      </StackPane>
                      <StackPane style="-fx-background-color: lightblue;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                         <children>
-                           <Label style="-fx-padding: 40;" text="Admins: 2" />
+                           <Label style="-fx-padding: 40;" fx:id="adminCountLabel" text="Admins: " />
                         </children>
                      </StackPane>
       
@@ -53,17 +53,17 @@
                      <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="65,000 Total Revenue" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                      <StackPane style="-fx-background-color: lightblue;" GridPane.rowIndex="3">
                         <children>
-                           <Label style="-fx-padding: 40;" text="Total Rides Booked: 396" />
+                           <Label style="-fx-padding: 40;" fx:id="totalRidesLabel" text="Total Rides Booked: " />
                         </children>
                      </StackPane>
                      <StackPane style="-fx-background-color: lightblue;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                         <children>
-                           <Label style="-fx-padding: 40;" text="Total Profit: 44,000" />
+                           <Label style="-fx-padding: 40;" fx:id="totalProfitLabel" text="Total Profit: " />
                         </children>
                      </StackPane>
                      <StackPane style="-fx-background-color: lightblue;" GridPane.columnIndex="2" GridPane.rowIndex="3">
                         <children>
-                           <Label style="-fx-padding: 40;" text="Total Taxes: 11,000" />
+                           <Label style="-fx-padding: 40;" fx:id="totalTaxLabel" text="Total Taxes: " />
                         </children>
                      </StackPane>
       
@@ -71,17 +71,17 @@
                      <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="32 Total Cars" GridPane.columnIndex="0" GridPane.rowIndex="4" />
                      <StackPane style="-fx-background-color: lightblue;" GridPane.rowIndex="5">
                         <children>
-                           <Label style="-fx-padding: 40;" text="Cars currently rented: 24" />
+                           <Label style="-fx-padding: 40;" fx:id="carsRentedLabel" text="Cars currently rented: " />
                         </children>
                      </StackPane>
                      <StackPane style="-fx-background-color: lightblue;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                         <children>
-                           <Label style="-fx-padding: 40;" text="Cars in Maintenance: 4" />
+                           <Label style="-fx-padding: 40;" fx:id="carsInMaintenanceLabel" text="Cars in Maintenance: " />
                         </children>
                      </StackPane>
                      <StackPane style="-fx-background-color: lightblue;" GridPane.columnIndex="2" GridPane.rowIndex="5">
                         <children>
-                           <Label style="-fx-padding: 40;" text="Available Cars: 4" />
+                           <Label style="-fx-padding: 40;" fx:id="availableCarsLabel" text="Available Cars: " />
                         </children>
                      </StackPane>
                      <columnConstraints>
@@ -132,9 +132,9 @@
                      </HBox>
                      <HBox spacing="10">
                         <Label text="Chart Type:" />
+                        <RadioButton fx:id="pieChartRadio" text="Pie Chart" />
                         <RadioButton fx:id="barChartRadio" text="Bar Chart" />
                         <RadioButton fx:id="lineChartRadio" text="Line Chart" />
-                        <RadioButton fx:id="pieChartRadio" text="Pie Chart" />
                      </HBox>
                   </VBox>
                </VBox>

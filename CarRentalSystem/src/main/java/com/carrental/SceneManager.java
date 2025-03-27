@@ -11,6 +11,7 @@ import java.util.Map;
 
 import com.carrental.controllers.auth.ResetPasswordController;
 import com.carrental.controllers.auth.SignupController;
+import com.carrental.controllers.dashboards.AdminDashboard.ReportsPageController;
 
 public class SceneManager {
     private static Stage primaryStage;
@@ -51,6 +52,9 @@ public class SceneManager {
             }
             if (controller instanceof SignupController) {
                 ((SignupController) controller).resetAndShow();
+            }
+            if (controller instanceof ReportsPageController) {
+                ((ReportsPageController) controller).initialize();
             }
         } else {
             System.err.println("Scene not found: " + name);

@@ -219,4 +219,75 @@ public class CarDAO {
         }
         return reportData;
     }
+    
+    public Map<String, Integer> getUserCounts() throws SQLException {
+        String query = "SELECT role, COUNT(*) as count FROM CR_User GROUP BY role";
+        return executeReportQueryInteger(query, "getUserCounts()");
+    }
+
+    public Map<String, Integer> getRideStats() throws SQLException {
+        Map<String, Integer> stats = new HashMap<>();
+
+        String ridesQuery = "SELECT COUNT(*) AS total_rides FROM CR_Booking WHERE status IN ('Completed', 'Confirmed')";
+        String paymentsQuery = "SELECT SUM(amount) AS total_amount FROM CR_Payment WHERE payment_status = 'Completed'";
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            try (PreparedStatement stmt = conn.prepareStatement(ridesQuery);
+                 ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    stats.put("total_rides", rs.getInt("total_rides"));
+                }
+            }
+
+            try (PreparedStatement stmt = conn.prepareStatement(paymentsQuery);
+                 ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    int totalProfit = (int) rs.getDouble("total_amount");
+                    int estimatedTax = (int) (totalProfit * 0.20); // 20% tax assumption
+                    stats.put("total_profit", totalProfit);
+                    stats.put("total_tax", estimatedTax);
+                }
+            }
+        }
+
+        return stats;
+    }
+
+
+    public Map<String, Integer> getCarStatusCounts() throws SQLException {
+        Map<String, Integer> stats = new HashMap<>();
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            // Cars Rented
+            String rentedQuery = "SELECT COUNT(DISTINCT car_id) AS count FROM CR_Booking WHERE status IN ('Confirmed', 'Completed') AND end_date >= CURDATE()";
+            try (PreparedStatement stmt = conn.prepareStatement(rentedQuery);
+                 ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    stats.put("rented", rs.getInt("count"));
+                }
+            }
+
+            // Cars in Maintenance
+            String maintenanceQuery = "SELECT COUNT(DISTINCT car_id) AS count FROM CR_Maintenance WHERE maintenance_date >= CURDATE()";
+            try (PreparedStatement stmt = conn.prepareStatement(maintenanceQuery);
+                 ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    stats.put("maintenance", rs.getInt("count"));
+                }
+            }
+
+            // Available Cars
+            String availableQuery = "SELECT COUNT(*) AS count FROM CR_Inventory WHERE availability = true";
+            try (PreparedStatement stmt = conn.prepareStatement(availableQuery);
+                 ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    stats.put("available", rs.getInt("count"));
+                }
+            }
+        }
+
+        return stats;
+    }
+
+
 }
