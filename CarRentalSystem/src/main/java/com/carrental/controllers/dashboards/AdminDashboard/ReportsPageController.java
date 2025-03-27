@@ -51,11 +51,7 @@ public class ReportsPageController {
 	public Label carsInMaintenanceLabel;
 	@FXML
 	public Label availableCarsLabel;
-	private CarDAO carDAO;
-
-	public void setCarDAO(CarDAO carDAO) {
-		this.carDAO = carDAO;
-	}
+	private CarDAO carDAO = new CarDAO();
 
 	private ToggleGroup chartTypeToggleGroup;
 
@@ -214,5 +210,10 @@ public class ReportsPageController {
 		}
 		chartContainer.getChildren().clear();
 		chartContainer.getChildren().add(pieChart);
+	}
+
+	public void setCarDAO(CarDAO carDAO) {
+	    System.out.println("Setting mock DAO in controller.");
+	    this.carDAO = carDAO;
 	}
 }
