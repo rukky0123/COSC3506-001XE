@@ -54,7 +54,7 @@ public class ReportsPageController {
 	private CarDAO carDAO;
 
 	public void setCarDAO(CarDAO carDAO) {
-	    this.carDAO = carDAO;
+		this.carDAO = carDAO;
 	}
 
 	private ToggleGroup chartTypeToggleGroup;
@@ -73,10 +73,8 @@ public class ReportsPageController {
 		pieChartRadio.setToggleGroup(chartTypeToggleGroup);
 		pieChartRadio.setSelected(true);
 
-		reportChoiceBox.setItems(FXCollections.observableArrayList(
-			"Car Usage Report", "Monthly Rentals Report",
-			"Revenue Report", "Customer Booking Report", "Car Inventory Report"
-		));
+		reportChoiceBox.setItems(FXCollections.observableArrayList("Car Usage Report", "Monthly Rentals Report",
+				"Revenue Report", "Customer Booking Report", "Car Inventory Report"));
 
 		reportChoiceBox.setOnAction(event -> generateReport());
 		chartTypeToggleGroup.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> generateReport());
@@ -105,7 +103,8 @@ public class ReportsPageController {
 
 	public void generateReport() {
 		String selectedReport = reportChoiceBox.getValue();
-		if (selectedReport == null) return;
+		if (selectedReport == null)
+			return;
 		try {
 			Map<String, ?> reportData = fetchReportData(selectedReport);
 			displayTableData(reportData);
@@ -117,30 +116,38 @@ public class ReportsPageController {
 
 	public Map<String, ?> fetchReportData(String reportType) throws SQLException {
 		switch (reportType) {
-			case "Car Usage Report": return carDAO.getCarUsageReport();
-			case "Monthly Rentals Report": return carDAO.getMonthlyRentalsReport();
-			case "Revenue Report": return carDAO.getRevenueReport();
-			case "Customer Booking Report": return carDAO.getCustomerBookingReport();
-			case "Car Inventory Report": return carDAO.getCarInventoryReport();
-			default: return null;
+		case "Car Usage Report":
+			return carDAO.getCarUsageReport();
+		case "Monthly Rentals Report":
+			return carDAO.getMonthlyRentalsReport();
+		case "Revenue Report":
+			return carDAO.getRevenueReport();
+		case "Customer Booking Report":
+			return carDAO.getCustomerBookingReport();
+		case "Car Inventory Report":
+			return carDAO.getCarInventoryReport();
+		default:
+			return null;
 		}
 	}
 
 	public Map<String, String> fetchReportDataAsString(String reportType) throws SQLException {
 		switch (reportType) {
-			case "Revenue Report": return carDAO.getRevenueReportAsString();
-			case "Monthly Rentals Report": return carDAO.getMonthlyRentalsReportAsString();
-			case "Customer Booking Report": return carDAO.getCustomerBookingReportAsString();
-			default: throw new SQLException("Unknown report type");
+		case "Revenue Report":
+			return carDAO.getRevenueReportAsString();
+		case "Monthly Rentals Report":
+			return carDAO.getMonthlyRentalsReportAsString();
+		case "Customer Booking Report":
+			return carDAO.getCustomerBookingReportAsString();
+		default:
+			throw new SQLException("Unknown report type");
 		}
 	}
 
 	public void displayTableData(Map<String, ?> data) {
 		ObservableList<AbstractMap.SimpleEntry<String, ?>> tableData = FXCollections.observableArrayList(
-			data.entrySet().stream()
-				.map(entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), entry.getValue()))
-				.collect(Collectors.toList())
-		);
+				data.entrySet().stream().map(entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), entry.getValue()))
+						.collect(Collectors.toList()));
 		column1.setCellValueFactory(new PropertyValueFactory<>("key"));
 		column2.setCellValueFactory(new PropertyValueFactory<>("value"));
 		reportTable.setItems(tableData);
@@ -168,9 +175,12 @@ public class ReportsPageController {
 
 	private void displayChart(Map<String, ?> data, String reportType) {
 		chartContainer.getChildren().clear();
-		if (barChartRadio.isSelected()) displayBarChart(data, reportType);
-		else if (lineChartRadio.isSelected()) displayLineChart(data, reportType);
-		else if (pieChartRadio.isSelected()) displayPieChart(data);
+		if (barChartRadio.isSelected())
+			displayBarChart(data, reportType);
+		else if (lineChartRadio.isSelected())
+			displayLineChart(data, reportType);
+		else if (pieChartRadio.isSelected())
+			displayPieChart(data);
 	}
 
 	private void displayBarChart(Map<String, ?> data, String reportType) {

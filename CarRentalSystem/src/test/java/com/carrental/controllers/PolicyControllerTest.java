@@ -13,30 +13,30 @@ import static org.mockito.Mockito.*;
 
 public class PolicyControllerTest extends ApplicationTest {
 
-    private PolicyController controller;
+	private PolicyController controller;
 
-    @Override
-    public void start(Stage stage) {
-        // Needed to initialize JavaFX thread
-    }
+	@Override
+	public void start(Stage stage) {
+		// Needed to initialize JavaFX thread
+	}
 
-    @BeforeEach
-    void setUp() {
-        controller = new PolicyController();
-        controller.logoImage = new ImageView();
-    }
+	@BeforeEach
+	void setUp() {
+		controller = new PolicyController();
+		controller.logoImage = new ImageView();
+	}
 
-    @Test
-    void testInitializeLogoImageLoads() {
-        // Just run it to verify it doesn't throw
-        controller.initialize();
-    }
+	@Test
+	void testInitializeLogoImageLoads() {
+		// Just run it to verify it doesn't throw
+		controller.initialize();
+	}
 
-    @Test
-    void testGoToLoginNavigatesToLoginScene() {
-        try (MockedStatic<SceneManager> mockedSceneManager = mockStatic(SceneManager.class)) {
-            controller.goToLogin();
-            mockedSceneManager.verify(() -> SceneManager.showScene("login"));
-        }
-    }
+	@Test
+	void testGoToLoginNavigatesToLoginScene() {
+		try (MockedStatic<SceneManager> mockedSceneManager = mockStatic(SceneManager.class)) {
+			controller.goToLogin();
+			mockedSceneManager.verify(() -> SceneManager.showScene("login"));
+		}
+	}
 }
