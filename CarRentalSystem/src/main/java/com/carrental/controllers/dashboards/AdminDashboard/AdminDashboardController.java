@@ -8,7 +8,6 @@ import com.carrental.models.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
@@ -25,17 +24,14 @@ public class AdminDashboardController {
     @FXML
     public void initialize() {
         try {
-            // Load Navbar FXML manually
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/carrental/ui/views/dashboards/AdminDashboard/components/Navbar.fxml"));
             HBox navbar = loader.load();
 
-            // Set to the container in the VBox
             HBox.setHgrow(navbar, Priority.ALWAYS);
             navbar.getStyleClass().add("navbar");
             navbar.getStylesheets().add(getClass().getResource("/com/carrental/ui/css/dashboard.css").toExternalForm());
             navbarContainer.getChildren().add(navbar);
 
-            // Get controller and setup navigation
             NavbarController navbarController = loader.getController();
             navbarController.setOnNavigate(this::handleNavigation);
             navbarController.setOnLogout(this::handleLogout);
@@ -49,13 +45,11 @@ public class AdminDashboardController {
             e.printStackTrace();
         }
 
-        // Default page load
         loadPage("reports");
     }
 
     @FXML
     public void handleLogout() {
-        // Logout logic: clear the session and navigate to the login page
         UserSession.logout();
         SceneManager.showScene("login");
     }
@@ -80,19 +74,22 @@ public class AdminDashboardController {
     private void loadPage(String pageName) {
         try {
             String fxmlPath = switch (pageName) {
-                case "users" -> "/com/carrental/ui/views/dashboards/AdminDashboard/Users.fxml";
-                case "cars" -> "/com/carrental/ui/views/dashboards/AdminDashboard/Cars.fxml";
-                case "bookings" -> "/com/carrental/ui/views/dashboards/AdminDashboard/Bookings.fxml";
-                case "reports" -> "/com/carrental/ui/views/dashboards/AdminDashboard/Reports.fxml";
-                default -> "/com/carrental/ui/views/dashboards/AdminDashboard/Reports.fxml";
+                case "users" -> "com/carrental/ui/views/dashboards/AdminDashboard/Users.fxml";
+                case "cars" -> "com/carrental/ui/views/dashboards/AdminDashboard/Cars.fxml";
+                case "bookings" -> "com/carrental/ui/views/dashboards/AdminDashboard/Bookings.fxml";
+                case "reports" -> "com/carrental/ui/views/dashboards/AdminDashboard/Reports.fxml";
+                default -> "com/carrental/ui/views/dashboards/AdminDashboard/Reports.fxml";
             };
 
-            Node view = FXMLLoader.load(getClass().getResource(fxmlPath));
+            URL resourceURL = getClass().getClassLoader().getResource(fxmlPath);
+            if (resourceURL == null) {
+                throw new RuntimeException("FXML file not found: " + fxmlPath);
+            }
+            Node view = FXMLLoader.load(resourceURL);
             contentArea.getChildren().setAll(view);
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error loading FXML file", e);
         }
     }
-
 }
