@@ -67,7 +67,7 @@
 					<Label prefWidth="75.0" style="-fx-text-fill: white;"
 						text="Password" />
 					<PasswordField fx:id="passwordField"
-						prefWidth="325.0" promptText="Enter Password" />
+						prefWidth="325.0" promptText="Enter Password" onAction="#handleLogin"/>
 				</children>
 			</HBox>
 			<Label fx:id="passwordErrorLabel"
