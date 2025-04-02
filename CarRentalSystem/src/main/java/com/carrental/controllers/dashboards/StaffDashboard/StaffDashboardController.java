@@ -49,7 +49,7 @@ public class StaffDashboardController {
 			e.printStackTrace();
 		}
 
-		// loadPage("reports");
+		loadPage("reports");
 	}
 
 	@FXML
@@ -63,9 +63,9 @@ public class StaffDashboardController {
 		// case "users":
 		// 	loadPage("users");
 		// 	break;
-		// case "reports":
-		// 	loadPage("reports");
-		// 	break;
+		case "reports":
+			loadPage("reports");
+			break;
 		case "bookings":
 			loadPage("bookings");
 			break;
@@ -81,8 +81,8 @@ public class StaffDashboardController {
 			//  case "users" -> "com/carrental/ui/views/dashboards/StaffDashboard/Users.fxml";
 			case "cars" -> "com/carrental/ui/views/dashboards/StaffDashboard/Cars.fxml";
 			case "bookings" -> "com/carrental/ui/views/dashboards/StaffDashboard/Bookings.fxml";
-			// case "reports" -> "com/carrental/ui/views/dashboards/StaffDashboard/Reports.fxml";
-			default -> "com/carrental/ui/views/dashboards/StaffDashboard/Reports.fxml";
+			case "reports" -> "com/carrental/ui/views/dashboards/StaffDashboard/DashReport.fxml";
+			default -> "com/carrental/ui/views/dashboards/StaffDashboard/DashReport.fxml";
 			};
 
 			URL resourceURL = getClass().getClassLoader().getResource(fxmlPath);
