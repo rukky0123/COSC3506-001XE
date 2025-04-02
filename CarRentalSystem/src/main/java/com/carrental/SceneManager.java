@@ -13,6 +13,7 @@ import com.carrental.controllers.auth.ResetPasswordController;
 import com.carrental.controllers.auth.SignupController;
 import com.carrental.controllers.dashboards.AdminDashboard.ReportsPageController;
 
+
 public class SceneManager {
 	private static Stage primaryStage;
 	private static final Map<String, Scene> scenes = new HashMap<>();
@@ -70,7 +71,7 @@ public class SceneManager {
 	}
 
 	public static void initStaffScenes() {
-		// Staff routes go here
+		loadScene("staffDashboard", "com/carrental/ui/views/dashboards/StaffDashboard/StaffDashboard.fxml");
 	}
 
 	public static void initAdminScenes() {

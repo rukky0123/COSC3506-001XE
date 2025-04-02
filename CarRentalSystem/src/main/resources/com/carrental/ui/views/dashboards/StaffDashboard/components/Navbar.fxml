@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<HBox spacing="30" styleClass="navbar" prefHeight="60.0" prefWidth="Infinity" stylesheets="@/com/carrental/ui/css/dashboard.css"
+      xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.carrental.controllers.dashboards.StaffDashboard.components.NavbarController">
+
+    <!-- Logo Section -->
+    <HBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
+        <ImageView fx:id="logoImage" fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true"/>
+        <Label text="Harmoney" styleClass="logo-text"/>
+    </HBox>
+
+    <!-- Navigation Links -->
+    <HBox spacing="15" alignment="CENTER" HBox.hgrow="ALWAYS">
+        <Hyperlink fx:id="dashboardLink" text="Dashboard" styleClass="nav-link"/>
+        <!-- <Hyperlink fx:id="usersLink" text="Users" styleClass="nav-link"/> -->
+        <Hyperlink fx:id="carsLink" text="Cars" styleClass="nav-link"/>
+        <Hyperlink fx:id="bookingsLink" text="Bookings" styleClass="nav-link"/>
+
+    </HBox>
+
+    <HBox spacing="15" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+        <Label fx:id="welcomeLabel" styleClass="description-text"/>
+        <Button fx:id="logoutButton" text="Logout" styleClass="logout-button"/>
+    </HBox>
+</HBox>

@@ -74,7 +74,7 @@ public class LoginController {
 				SceneManager.showScene("adminDashboard");
 			} else if (user.getRole().equals("Staff")) {
 				SceneManager.initStaffScenes();
-				// SceneManager.showScene("customerDashboard");
+				SceneManager.showScene("staffDashboard");
 			} else {
 				showAlert("Role Error", "Role Error");
 			}
