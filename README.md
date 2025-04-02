@@ -71,10 +71,196 @@ This repository is for developing a Project Software Engineering
 
 ---
 
-## **Installation Steps**
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-username/repository-name.git
+
+# JavaFX Car Rental System
+
+## Setting Up the JavaFX-Based Car Rental System on Windows
+
+---
+
+## 1. Install Required Software
+
+Before setting up the project, you need to install the following tools:
+
+### 1.1 Install Java Development Kit (JDK 21)
+
+1. Download JDK 21 (OpenJDK 23.0.2) from the official website:  
+   👉 https://jdk.java.net/21/
+2. Run the installer and follow the on-screen instructions.
+3. Verify installation:
+
+```bash
+java -version
+```
+
+Expected Output:
+
+```bash
+openjdk version "21" ...
+```
+
+---
+
+### 1.2 Install Eclipse IDE for Java Developers
+
+- Download from: https://www.eclipse.org/downloads/
+- Install and launch Eclipse.
+
+---
+
+### 1.3 Install Git for Windows
+
+1. Download: https://git-scm.com/download/win
+2. Verify installation:
+
+```bash
+git --version
+```
+
+---
+
+### 1.4 Install Apache Maven
+
+1. Download from: https://maven.apache.org/download.cgi  
+2. Extract to: `C:\maven`
+3. Set environment variables:
+    - `MAVEN_HOME = C:\maven`
+    - Add `C:\maven\bin` to system `Path`
+4. Verify installation:
+
+```bash
+mvn -version
+```
+
+---
+
+### 1.5 Install JavaFX 21.0.6
+
+1. Download SDK: https://gluonhq.com/products/javafx/
+2. Extract to: `C:\javafx-sdk-21.0.6`
+3. Set environment variable:
+    - `PATH_TO_FX = C:\javafx-sdk-21.0.6\lib`
+4. Verify:
+
+```bash
+echo %PATH_TO_FX%
+```
+
+---
+
+### 1.6 Install MySQL (Database)
+
+#### Step 1: Install MySQL Community Edition
+
+- Download Installer: https://dev.mysql.com/downloads/installer/
+- Install:
+  - MySQL Server
+  - MySQL Workbench
+  - MySQL Shell
+- Set a root password during setup
+
+#### Step 2: Verify MySQL Installation
+
+```bash
+mysql -u root -p
+```
+
+> Enter your root password. If you see `mysql>`, you're good to go.
+
+#### Step 3: Create the Database
+
+```sql
+CREATE DATABASE carrental;
+USE carrental;
+```
+
+> Keep MySQL running for the app to connect.
+
+---
+
+## 2. Clone and Set Up the Project
+
+### 2.1 Clone the GitHub Repository
+
+```bash
+cd C:\Users\YourUsername\Documents
+git clone https://github.com/AUCOS3506/COSC3506-001XE.git
+cd COSC3506-001XE
+```
+
+### 2.2 Import into Eclipse
+
+1. File → Import... → Existing Maven Projects
+2. Browse to `CarRentalSystem` folder
+3. Finish
+
+### 2.3 Update Maven Dependencies
+
+- Right-click project → Maven → Update Project → OK
+
+---
+
+## 3. Configure and Run the Application
+
+### 3.1 Add VM Arguments for JavaFX
+
+1. Run → Run Configurations...
+2. Select your Java Application (e.g., `MainApp`)
+3. Under **VM Arguments**, add:
+
+```bash
+--module-path C:\javafx-sdk-21.0.6\lib --add-modules javafx.controls,javafx.fxml
+```
+
+4. Apply → Run
+
+---
+
+### 3.2 Run the App from Eclipse
+
+- Right-click `MainApp.java` → Run As → Java Application  
+> The login screen should appear.
+
+---
+
+### 3.3 Run Using Maven (Optional)
+
+```bash
+mvn clean javafx:run
+```
+
+Or fallback command:
+
+```bash
+mvn exec:java -Dexec.mainClass="com.carrental.MainApp"
+```
+
+---
+
+## 4. Scene Builder Integration (Optional)
+
+### Install Scene Builder
+
+- Download: https://gluonhq.com/products/scene-builder/
+
+### Connect with Eclipse
+
+- Right-click any `.fxml` → Open With → Scene Builder  
+- You can design your UI visually, and changes will reflect in Eclipse.
+
+---
+
+## License
+
+This project is licensed under Eduation purpose of Algoma University.
+
+---
+
+## Contact
+
+Created by **Deepasree Meena Padmanabhan, Pujan Bhuva, Simranjeet Kaur & OgheneRukevwe Esegba**  
+For questions, reach out at: https://github.com/Deepasree-MP, https://github.com/heisenbug-io , https://github.com/dhillonsimran26 and https://github.com/rukky0123
+
 
 
 
