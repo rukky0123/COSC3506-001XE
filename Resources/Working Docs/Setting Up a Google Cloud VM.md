@@ -150,3 +150,5 @@ Or delete from the Cloud Console.
 - [Google Cloud VM Docs](https://cloud.google.com/compute/docs/instances)
 
 ---
+## To Verify Google VM 
+- [Google VM](https://console.cloud.google.com/compute/instancesDetail/zones/northamerica-northeast2-c/instances/carrental-javafx-vm?project=cosc3506-carrental-project&invt=Abtt4w)
