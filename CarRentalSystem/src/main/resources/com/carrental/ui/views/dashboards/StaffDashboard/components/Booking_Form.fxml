@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.carrental.controllers.dashboards.StaffnDashboard.components.Booking_listFormDialogController"
+            prefWidth="440" prefHeight="480"
+            styleClass="booking-dialog-pane">
+
+    <content>
+        <VBox spacing="18" alignment="CENTER">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <Label fx:id="formTitle" text="Edit Booking" styleClass="booking-dialog-title"/>
+
+            <!-- Customer Info -->
+            <VBox spacing="6" alignment="CENTER_LEFT" styleClass="booking-dialog-section">
+                <Label text="Customer:" styleClass="booking-label-title"/>
+                <Label fx:id="usernameLabel" styleClass="booking-read-only-label"/>
+            </VBox>
+
+            <!-- Car Info -->
+            <VBox spacing="6" alignment="CENTER_LEFT" styleClass="booking-dialog-section">
+                <Label text="Car:" styleClass="booking-label-title"/>
+                <Label fx:id="carNameLabel" styleClass="booking-read-only-label"/>
+            </VBox>
+
+            <!-- Dates -->
+            <DatePicker fx:id="startDatePicker" promptText="Start Date" styleClass="booking-input-field"/>
+            <DatePicker fx:id="endDatePicker" promptText="End Date" styleClass="booking-input-field"/>
+
+            <!-- Status -->
+            <ComboBox fx:id="statusBox" promptText="Status" styleClass="booking-input-field"/>
+
+            <!-- Error -->
+            <Label fx:id="errorLabel" styleClass="booking-error-text"/>
+
+            <!-- Buttons -->
+            <HBox spacing="15" alignment="CENTER">
+                <Button fx:id="cancelButton" text="Cancel" styleClass="booking-secondary-button"/>
+                <Button fx:id="saveButton" text="Save" defaultButton="true" styleClass="booking-primary-button"/>
+            </HBox>
+        </VBox>
+    </content>
+</DialogPane>

@@ -80,7 +80,7 @@ public class StaffDashboardController {
 			String fxmlPath = switch (pageName) {
 			//  case "users" -> "com/carrental/ui/views/dashboards/StaffDashboard/Users.fxml";
 			case "cars" -> "com/carrental/ui/views/dashboards/StaffDashboard/Cars.fxml";
-			case "bookings" -> "com/carrental/ui/views/dashboards/StaffDashboard/Bookings.fxml";
+			case "bookings" -> "com/carrental/ui/views/dashboards/StaffDashboard/Booking_list.fxml";
 			case "reports" -> "com/carrental/ui/views/dashboards/StaffDashboard/DashReport.fxml";
 			default -> "com/carrental/ui/views/dashboards/StaffDashboard/DashReport.fxml";
 			};
